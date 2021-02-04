@@ -86,6 +86,8 @@ def login(request) :
         if email in req and req[email] == password :
             print(True)
             return JsonResponse({'user' : "True"})
+        elif email not in req:
+            return JsonResponse({'user' : "New"})
         else :
             print(False)
             return JsonResponse({'user' : "False"})

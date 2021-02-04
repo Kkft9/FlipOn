@@ -9,7 +9,6 @@ import { AdminService } from '../admin/service.service';
 export class HeaderComponent implements OnInit {
 
   links = [
-
     {link: '/men', title: 'Men'},
     {link: '/men', title: 'Women'},
     {link: '/men', title: 'Watches'},
