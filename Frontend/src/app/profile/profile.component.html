@@ -1,0 +1,12 @@
+<div class="card p-2 m-5 mx-auto text-center" style="width: 40%;">
+  <div class="card-body">
+      <h4 class="card-title"><b>My Profile</b></h4>
+      <form>
+          <p> <input type="text" style="width: 75%; border: none; border-bottom: 1px solid #eb445a;" name="fname"  value="John Doe" required> </p>
+          <p> <input type="email" style="width: 75%; border: none; border-bottom: 1px solid #eb445a;" name="email"  ngModel={{this.adminService.name_val}} required> </p>
+          <p> <input type="text" style="width: 75%; border: none; border-bottom: 1px solid #eb445a;" name="phone"  value="98xx98xx98" required> </p>
+          <button type="submit" class="btn btn-danger" routerLink="/home">Update</button><p></p>
+          <a href="#" style = "font-size: 15; color: #326a9e;">Change Password</a>
+        </form>
+    </div>
+</div>

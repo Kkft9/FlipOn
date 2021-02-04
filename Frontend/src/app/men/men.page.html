@@ -1,0 +1,70 @@
+<ion-grid>
+       <h3 class="mx-3 my-3" style="font-weight: bold;">FORMALS</h3>
+
+
+        <ion-row >
+
+            <ion-col size="4"  style="padding-left: 8%; padding-right: 4%; ">
+
+                <div class=" card "   style="text-align: center; border: none;">
+
+                         <img src="../../assets/i3.jpg"  routerLink="/product-details" style="width: 260px; height: 400px;"  >
+
+
+                    <span class="card-body"  style="background-color: rgb(18, 231, 247); padding:2%;   max-width: 260px; width: auto  ">
+                      <h5 class="card-title"  style="color: rgb(235, 25, 25);">Formals-1</h5>
+
+                      <a style="color: white;"  *ngIf="adminService.admin" (click)="showAlert()"class="btn btn-danger">Add to Cart</a>
+                      <a style="color: white;"  *ngIf="!adminService.admin"  (click)="f1()"  routerLink="/login"  class="btn btn-danger">Add to Cart</a>
+                    </span>
+
+
+
+              </div>
+            </ion-col>
+            <ion-col size="4"  style="padding-left: 6%; padding-right: 4%;">
+
+              <div class=" card " style="text-align: center; border: none;">
+
+
+                       <img src="../../assets/i3.jpg"   routerLink="/product-details" style="width: 260px; height: 400px;"  >
+
+
+                  <span class="card-body"  style="background-color: rgb(18, 231, 247); padding:2%;   max-width: 260px; width: auto  ">
+                    <h5 class="card-title"  style="color: rgb(235, 25, 25);">Formals-2</h5>
+
+                    <a style="color: white;"  *ngIf="adminService.admin" (click)="showAlert()"class="btn btn-danger">Add to Cart</a>
+                  <a style="color: white;"  *ngIf="!adminService.admin"  (click)="f1()" routerLink="/login" class="btn btn-danger">Add to Cart</a>
+                  </span>
+
+
+
+            </div>
+          </ion-col>
+          <ion-col size="4"  style="padding-left: 4%; padding-right: 4%;">
+
+            <div class=" card " style="text-align: center; border: none;">
+
+                     <img src="../../assets/i3.jpg"  routerLink="/product-details" style="width: 260px; height: 400px;"  >
+
+
+                <span class="card-body"  style="background-color: rgb(18, 231, 247); padding:2%;   max-width: 260px; width: auto  ">
+                  <h5 class="card-title"  style="color: rgb(235, 25, 25);">Formals-3</h5>
+
+                  <a style="color: white;"  *ngIf="adminService.admin" (click)="showAlert()"class="btn btn-danger">Add to Cart</a>
+                  <a style="color: white;"  *ngIf="!adminService.admin"   routerLink="/login"  (click)="f1()"class="btn btn-danger">Add to Cart</a>
+                </span>
+
+
+
+          </div>
+        </ion-col>
+
+
+
+
+
+  </ion-row>
+  <br>
+        <br>
+  </ion-grid>

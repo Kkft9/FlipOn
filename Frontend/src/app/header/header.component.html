@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand"  routerLink="/home"  (click)="f4()" href="#" style="font-size:x-large; color: rgb(235, 75, 83);  "><b>FlipOn</b></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-sauto">
+      <li class="nav-item mx-2" *ngIf="this.adminService.admin">
+        <a class="nav-link" >Hello, {{this.adminService.name_val}}</a>
+      <li class="nav-item mx-2" *ngFor="let link of links">
+        <a class="nav-link" [routerLink]="link.link">{{link.title}}</a>
+      </li>
+
+    </ul>
+
+  <ul class="navbar-nav" style="margin-left: auto;"  >
+    <form class="form-inline my-2 my-lg-0 mx-2">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-danger  my-2 my-sm-0"  type="submit">Search</button>
+    </form>
+      <li class="nav-item dropdown mx-2">
+          <a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="https://cdn3.iconfinder.com/data/icons/flatastic-4-1/256/user_red-256.png" width="30" height="30" alt="user"></a>
+          <div class="dropdown-menu" aria-labelledby="navDropDownLink">
+              <a class="dropdown-item" *ngIf="adminService.admin" routerLink="/profile"  href="#">Profile Details</a>
+              <a class="dropdown-item" *ngIf="adminService.admin" routerLink="/order-hist"  href="#">Order History</a>
+              <div *ngIf="adminService.admin" class="dropdown-divider"></div>
+              <a class="dropdown-item" *ngIf="!adminService.admin" routerLink="/signup" href="#">SignUp</a>
+              <div class="dropdown-divider" *ngIf="!adminService.admin"></div>
+              <a class="dropdown-item" href="#" *ngIf="!adminService.admin" routerLink="/login" style="color:red">LogIn</a>
+              <a class="dropdown-item" href="#" *ngIf="adminService.admin" routerLink="/home" (click)="f2()"  style="color:red">LogOut</a>
+          </div>
+      </li>
+      <li class="nav-item ">
+          <a class="nav-link" *ngIf="!adminService.admin" (click)="f3()" routerLink="/login" href="#"><img src="https://cdn3.iconfinder.com/data/icons/complete-set-icons/128/cart512x512.png" width="35" height="35" alt="cart"><span class="sr-only">(current)</span></a>
+          <a class="nav-link" *ngIf="adminService.admin" routerLink="/cart" href="#"><img src="https://cdn3.iconfinder.com/data/icons/complete-set-icons/128/cart512x512.png" width="35" height="35" alt="cart"><span class="sr-only">(current)</span></a>
+      </li>
+  </ul>
+
+  </div>
+</nav>

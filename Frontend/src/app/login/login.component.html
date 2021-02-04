@@ -1,0 +1,17 @@
+<div class="card m-5 p-2 text-center mx-auto" style="width: 40%; ">
+  <div class="card-body">
+      <h4 class="card-title"><b>Sign in to your account!</b></h4>
+          <form>
+          <p> <input type="email" style="width: 75%; border: none; border-bottom: 1px solid #eb445a;" name="email"
+            [(ngModel)]="this.adminService.name_val" placeholder="Email" required> </p>
+          <p> <input type="password" style="width: 75%; border: none; border-bottom: 1px solid #eb445a ;" placeholder="Password" required> </p>
+          <button type="submit" class="btn btn-danger" *ngIf="!adminService.add_cart2 && !adminService.add_cart && !adminService.add_cart3 " routerLink="/home" (click)="f2()">Sign in</button><p></p>
+          <button type="submit" class="btn btn-danger" *ngIf="adminService.add_cart" routerLink="/men" (click)="f2()">Sign in</button><p></p>
+          <button type="submit" class="btn btn-danger" *ngIf="adminService.add_cart2 " routerLink="/cart" (click)="f2()">Sign in</button><p></p>
+          <button type="submit" class="btn btn-danger" *ngIf="adminService.add_cart3 " routerLink="/product-details" (click)="f2()">Sign in</button><p></p>
+          <a href="#" style = "font-size: 15; color: #326a9e; margin-top: 10px;">Forgot Password</a> <br>
+          Don't have an account? <a href="#" style = "font-size: 15; color: #326a9e;" routerLink="/signup">Sign Up!</a>
+          </form>
+  </div>
+</div>
+
