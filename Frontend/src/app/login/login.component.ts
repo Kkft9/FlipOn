@@ -12,11 +12,16 @@ import { AlertController } from '@ionic/angular';
 export class LoginComponent implements OnInit {
   email = "";
   password = "";
-  j : any;
+  userDetails : any;
   postData = {};
   userData : any;
 
-  constructor(public adminService: AdminService,  private http : HttpClient ,public router: Router,public alertCtrl: AlertController ) {}
+  constructor(public adminService: AdminService,  private http : HttpClient ,public router: Router,public alertCtrl: AlertController ) {
+    this.http.get("http://127.0.0.1:8000/login/").subscribe(data =>{
+      this.userDetails = data;
+      // console.log(this.userDetails);
+    })
+  }
 
   ngOnInit(): void {
   }
@@ -24,7 +29,7 @@ export class LoginComponent implements OnInit {
   
 
   login() {
-    console.log(this.email + "  " + this.password);
+    // console.log(this.email + "  " + this.password);
   
     this.postData = {
       'email' : this.email ,
@@ -51,7 +56,7 @@ export class LoginComponent implements OnInit {
   }
 
   f2(){
-    this.adminService.name_val = this.email;
+    this.adminService.name_val = this.userDetails['details'][this.email]['name'];
     this.adminService.admin=true;
     this.adminService.add_cart=false;
     this.adminService.add_cart2=false;

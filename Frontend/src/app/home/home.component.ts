@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private http: HttpClient){
     http.get('https://www.autonise.com/api/users/getCatalog').subscribe((res: any) => {
-      console.log(res);
+      // console.log(res);
       for (let catalogI of res.catalog){
         this.cardContent.push({
           conten: catalogI.description,

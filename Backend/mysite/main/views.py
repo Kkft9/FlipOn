@@ -13,41 +13,41 @@ from db import readDB, writeDB
 def hello(request):
     return HttpResponse("<h1>Hello</h1>")
 
-@csrf_exempt
-def funMen(request):
-    if request.method == 'GET' :
-        data = readDB(filename = DB)
-        req = data['database']['men']
-        res = {'men' : req}
-        return JsonResponse(res)
+# @csrf_exempt
+# def funMen(request):
+#     if request.method == 'GET' :
+#         data = readDB(filename = DB)
+#         req = data['database']['men']
+#         res = {'men' : req}
+#         return JsonResponse(res)
 
-    elif request.method == 'POST' :
-        dictObj = json.loads(request.body)
-        if dictObj['add'] == 'true' :
-            o = dictObj['obj']
-            writeDB(obj=o, loc='men', filename = DB)
-        return JsonResponse({"request" : "posted in men section"})
+#     elif request.method == 'POST' :
+#         dictObj = json.loads(request.body)
+#         if dictObj['add'] == 'true' :
+#             o = dictObj['obj']
+#             writeDB(obj=o, loc='men', filename = DB)
+#         return JsonResponse({"request" : "posted in men section"})
 
-@csrf_exempt
-def funWomen(request) :
-    if request.method == 'GET' :
-        data = readDB(filename = DB)
-        req = data['database']['women']
-        res = {'women' : req}
-        return JsonResponse(res)
+# @csrf_exempt
+# def funWomen(request) :
+#     if request.method == 'GET' :
+#         data = readDB(filename = DB)
+#         req = data['database']['women']
+#         res = {'women' : req}
+#         return JsonResponse(res)
 
-    elif request.method == 'POST' :
-        dictObj = json.loads(request.body)
-        if dictObj['add'] == 'true' :
-            o = dictObj['obj']
-            writeDB(obj=o, loc='women', filename = DB)
-        return JsonResponse({"request" : "posted in women section"})
+#     elif request.method == 'POST' :
+#         dictObj = json.loads(request.body)
+#         if dictObj['add'] == 'true' :
+#             o = dictObj['obj']
+#             writeDB(obj=o, loc='women', filename = DB)
+#         return JsonResponse({"request" : "posted in women section"})
 
 @csrf_exempt
 def signup(request) :
     if request.method == 'GET' :
         data = readDB(filename = DB)
-        req = data['database']['signup']
+        req = data['database']['user']
         res = {'details' : req}
         return JsonResponse(res)
 
@@ -56,13 +56,12 @@ def signup(request) :
         email = dictObj['email']
         password = dictObj['password']
         data = readDB(filename = DB)
-        req = data['database']['login']
+        req = data['database']['user']
         if email in req :
             # print(True)
             return JsonResponse({'user' : "Already Exists"})
         else :
-            writeDB(dictObj , 'signup' , DB)
-            o = {email : password}
+            o = {dictObj['email'] : {'name' : dictObj['name'] , 'number' : dictObj['number'] , 'password' : dictObj['password']}}
             writeDB(o , 'login' , DB)
             # print(False)
             return JsonResponse({'user' : "User Registered"})
@@ -72,7 +71,7 @@ def signup(request) :
 def login(request) :
     if request.method == 'GET' :
         data = readDB(filename = DB)
-        req = data['database']['login']
+        req = data['database']['user']
         res = {'details' : req}
         return JsonResponse(res)
 
@@ -82,12 +81,14 @@ def login(request) :
         password = dictObj['password']
         # print(email + "     " + password)
         data = readDB(filename = DB)
-        req = data['database']['login']
-        if email in req and req[email] == password :
+        req = data['database']['user']
+        if email not in req:
+            return JsonResponse({'user' : "New"})
+
+        elif email in req and password==req[email]['password'] :
             print(True)
             return JsonResponse({'user' : "True"})
-        elif email not in req:
-            return JsonResponse({'user' : "New"})
+
         else :
             print(False)
             return JsonResponse({'user' : "False"})

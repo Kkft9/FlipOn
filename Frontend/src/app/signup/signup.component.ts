@@ -15,7 +15,8 @@ export class SignupComponent implements OnInit {
   password = "";
   number = "";
   userData: any;
-  postData = {}
+  postData = {};
+  userDetails : any;
 
   constructor(public adminService: AdminService, private http : HttpClient, public router: Router, public alertCtrl: AlertController) { }
 
@@ -24,10 +25,10 @@ export class SignupComponent implements OnInit {
 
   signup(){
     this.postData = {
-      'name' : this.name ,
       'email' : this.email ,
-      'password' : this.password ,
-      'number' : this.number
+      'name' : this.name ,
+      'number' : this.number,
+      'password' : this.password
     }
 
     this.http.post("http://127.0.0.1:8000/signup/" , this.postData).subscribe(data =>{
@@ -48,7 +49,7 @@ export class SignupComponent implements OnInit {
   }
 
   f2(){
-    this.adminService.name_val = this.email;
+    this.adminService.name_val = this.name;
     this.adminService.admin=true;
     this.adminService.add_cart=false;
     this.adminService.add_cart2=false;
