@@ -62,7 +62,7 @@ def signup(request) :
             return JsonResponse({'user' : "Already Exists"})
         else :
             o = {dictObj['email'] : {'name' : dictObj['name'] , 'number' : dictObj['number'] , 'password' : dictObj['password']}}
-            writeDB(o , 'login' , DB)
+            writeDB(o , 'user' , DB)
             # print(False)
             return JsonResponse({'user' : "User Registered"})
 

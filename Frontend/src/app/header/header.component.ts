@@ -23,8 +23,7 @@ export class HeaderComponent implements OnInit {
     this.adminService.admin=true;
   }
 
-  f2()
-  {console.log('s')
+  f2(){
     this.adminService.admin=false;
     this.adminService.name_val='';
   }
