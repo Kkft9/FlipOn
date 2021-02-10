@@ -2,10 +2,10 @@
   <div class="card-body">
       <h4 class="card-title"><b>My Profile</b></h4>
       <form>
-          <p> <input type="text" style="width: 75%; border: none; border-bottom: 1px solid #eb445a;" name="fname"  value="John Doe" required> </p>
-          <p> <input type="email" style="width: 75%; border: none; border-bottom: 1px solid #eb445a;" name="email"  ngModel={{this.adminService.name_val}} required> </p>
-          <p> <input type="text" style="width: 75%; border: none; border-bottom: 1px solid #eb445a;" name="phone"  value="98xx98xx98" required> </p>
-          <button type="submit" class="btn btn-danger" routerLink="/home">Update</button><p></p>
+          <p> <input type="text" style="width: 75%; border: none; border-bottom: 1px solid #eb445a;" name="fname"   [(ngModel)]="name" required> </p>
+          <p> <input type="email" style="width: 75%;font-weight: bolder; border: none; border-bottom: 1px solid #eb445a;" name="email"  disabled="disabled"  value={{this.adminService.id_val}} required> </p>
+          <p> <input type="text" style="width: 75%; border: none; border-bottom: 1px solid #eb445a;" name="phone" [(ngModel)]="number" required> </p>
+          <button type="submit" class="btn btn-danger" routerLink="/home"(click)="profile_update()" >Update</button><p></p>
           <a href="#" style = "font-size: 15; color: #326a9e;">Change Password</a>
         </form>
     </div>

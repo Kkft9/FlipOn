@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AdminService } from '../admin/service.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-header',
@@ -16,32 +17,60 @@ export class HeaderComponent implements OnInit {
 
   ];
 
-  constructor(public adminService: AdminService) { }
+  get staticname() {
+    return HeaderComponent.namei;
+  }
 
-  f1()
-  {console.log('ssd')
+
+ static namei='';
+
+  postData:any
+  number=""
+  userDetails : any;
+   constructor(public adminService: AdminService,  private http : HttpClient  ) {}
+
+
+   f1()
+  {
     this.adminService.admin=true;
+
   }
 
   f2()
-  {console.log('s')
+  {
     this.adminService.admin=false;
-    this.adminService.name_val='';
   }
+
   f3()
- {
-   this.adminService.add_cart2=true;
-   this.adminService.add_cart=false
+   {
+    this.adminService.add_cart2=true;
+    this.adminService.add_cart=false
     this.adminService.add_cart3=false
     }
 
+
     f4()
     {
+
       this.adminService.add_cart2=false;
       this.adminService.add_cart=false
-       this.adminService.add_cart3=false
+      this.adminService.add_cart3=false
+      console.log('in1');
+      this.http.get("http://127.0.0.1:8000/login/").subscribe(data =>{
+      this.userDetails = data;
+      console.log('in2');
+      HeaderComponent.namei=this.userDetails['details'][this.adminService.id_val]['name'];
+      console.log('in3');
+      // this.name= this.userDetails['details'][this.adminService.name_val]['name'];
+      // console.log(this.name);
+
     }
-  ngOnInit(): void {
+       )
   }
+
+  ngOnInit(): void {
+
+  }
+
 
 }

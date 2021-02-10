@@ -61,8 +61,8 @@ def signup(request) :
             # print(True)
             return JsonResponse({'user' : "Already Exists"})
         else :
-            o = {dictObj['email'] : {'name' : dictObj['name'] , 'number' : dictObj['number'] , 'password' : dictObj['password']}}
-            writeDB(o , 'login' , DB)
+            o = {dictObj['email'] : {'name' : dictObj['name'] , 'number' : dictObj['number'] , 'password' : dictObj['password'], 'cart':[] , 'price':0}}
+            writeDB(o , 'user' , DB)
             # print(False)
             return JsonResponse({'user' : "User Registered"})
 
@@ -92,4 +92,84 @@ def login(request) :
         else :
             print(False)
             return JsonResponse({'user' : "False"})
+
+@csrf_exempt
+def profile(request) :
+
+    if request.method == 'POST' :
+        dictObj = json.loads(request.body)
+        email = dictObj['email']
+        data = readDB(filename = DB)
+        req =  data['database']['user'][email]
+        req['number']= dictObj['number']
+        req['name']= dictObj['name']
+        o={email:req}
+        
+        writeDB(o, 'user', filename=DB)
+        return JsonResponse(data)
+
+@csrf_exempt
+def cart(request) :
+    if request.method == 'POST' :
+        dictObj = json.loads(request.body)
+        if 'content' not in dictObj and 'coupon' not in dictObj:
+            email = dictObj['email']
+            data = readDB(filename = DB)
+            req = data['database']['user'][email]['cart']
+            res = {'cart' : req, 'price': data['database']['user'][email]['price']}
+            return JsonResponse(res) 
+        
+        elif 'content' in dictObj: 
+            email = dictObj['email']
+            data = readDB(filename = DB)
+            
+          
+           
+            req = data['database']['user'][email]['cart']
+            print(req)
+            for i in reversed(req):
+                if i['content'] == dictObj['content']:
+                    req.remove(i)
+                    data['database']['user'][email]['price']= data['database']['user'][email]['price']-i['price']
+                    break
+            # req = data['database']['user'][email]['cart']
+            res = {'cart' : req, 'price': data['database']['user'][email]['price']}
+            print(req)
+            print(res)
+            with open(DB, mode='w') as f:
+                json.dump(data, f)
+
+            return JsonResponse(res)
+
+        else:
+            email = dictObj['email']
+            data = readDB(filename = DB)
+            
+            req = data['database']['coupon']
+            res = {'cart' : req}
+            
+            if req== dictObj['coupon']:
+            
+           
+
+                return JsonResponse({"response":"true"})
+
+            else:
+                 return JsonResponse({"response":"false"})
+
+
+@csrf_exempt
+def men(request):
+     if request.method == 'POST' :
+        dictObj = json.loads(request.body)
+        email = dictObj['email']
+        data = readDB(filename = DB)
+        req = data['database']['user'][email]['cart']
+        data['database']['user'][email]['price']= data['database']['user'][email]['price']+dictObj['cart']['price']
+        req.append(dictObj['cart'])
+
+        with open(DB, mode='w') as f:
+            json.dump(data, f)
+
+        return JsonResponse(data) 
 

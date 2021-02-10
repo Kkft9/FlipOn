@@ -1,13 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand"  routerLink="/home"  (click)="f4()" href="#" style="font-size:x-large; color: rgb(235, 75, 83);  "><b>FlipOn</b></a>
+  <a class="navbar-brand"  routerLink="/home"  (click)="f4()"  href="#" style="font-size:x-large; color: rgb(235, 75, 83);  "><b>
+    FlipOn
+   </b></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-sauto">
-      <li class="nav-item mx-2" *ngIf="this.adminService.admin">
-        <a class="nav-link" >Hello, {{this.adminService.name_val}}</a>
+      <li class="nav-item mx-2"  *ngIf="this.adminService.admin" >
+        <a class="nav-link" >Hello, {{staticname}}</a>
       <li class="nav-item mx-2" *ngFor="let link of links">
         <a class="nav-link" [routerLink]="link.link">{{link.title}}</a>
       </li>

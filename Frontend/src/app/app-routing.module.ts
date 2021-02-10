@@ -42,6 +42,7 @@ const routes: Routes = [
     loadChildren: () => import('./product-details/product-details.module').then( m => m.ProductDetailsPageModule)
   },
 
+
 ];
 
 

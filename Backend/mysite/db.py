@@ -16,3 +16,4 @@ def writeDB(obj, loc, filename):
     
     with open(filename, mode='w') as f:
         json.dump(data, f)
+

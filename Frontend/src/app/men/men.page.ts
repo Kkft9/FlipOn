@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { AdminService } from '../admin/service.service';
-
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-men',
   templateUrl: './men.page.html',
@@ -16,13 +16,24 @@ export class MenPage implements OnInit {
     this.adminService.add_cart2=false
  }
 
+ postData:any
   // public adminService: any;
   // public alertCtrl;
   // constructor(alertCtrl, adminService) {
   //   this.adminService=adminService;
   //   this.alertCtrl=alertCtrl
   // }
-  constructor(public adminService: AdminService, public alertCtrl: AlertController) { }
+  constructor(public adminService: AdminService, private http: HttpClient, public alertCtrl: AlertController){}
+
+  add_to_cart(cont,tit,price)
+  {
+    this.postData={'email':this.adminService.id_val, 'cart' : {"content": cont, "title": tit,"price":price}}
+    this.http.post("http://127.0.0.1:8000/men/",this.postData).subscribe((res: any) => {});
+  }
+
+
+
+
 
   async showAlert() {
     const alert = await this.alertCtrl.create({

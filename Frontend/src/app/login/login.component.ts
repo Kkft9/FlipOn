@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../admin/service.service';
 import { HttpClient } from '@angular/common/http';
-import {Router} from '@angular/router'; 
+import {Router} from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   postData = {};
   userData : any;
 
-  constructor(public adminService: AdminService,  private http : HttpClient ,public router: Router,public alertCtrl: AlertController ) {
+  constructor(public adminService: AdminService,  public http : HttpClient ,public router: Router,public alertCtrl: AlertController ) {
     this.http.get("http://127.0.0.1:8000/login/").subscribe(data =>{
       this.userDetails = data;
       // console.log(this.userDetails);
@@ -26,21 +27,22 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
+
 
   login() {
     // console.log(this.email + "  " + this.password);
-  
+
     this.postData = {
       'email' : this.email ,
       'password' : this.password
     }
-    
+
+
     this.http.post("http://127.0.0.1:8000/login/" , this.postData).subscribe(data =>{
       // console.log(data);
       this.userData = data;
       if(this.userData['user'] == 'True') {
-        this.router.navigate(['/home']);
+        this.navigator_decider();
         this.f2();
       }
       else if(this.userData['user'] == 'New') {
@@ -49,14 +51,27 @@ export class LoginComponent implements OnInit {
       }
       else {
         this.showAlert();
-        this.router.navigate(['/login']);
         console.log("Invalid Id/Password");
       }
     })
   }
 
+  navigator_decider()
+  {
+
+    if(this.adminService.add_cart==true)
+    this.router.navigate(['/men']);
+    else if(this.adminService.add_cart2==true)
+    this.router.navigate(['/cart']);
+    else if(this.adminService.add_cart3==true)
+    this.router.navigate(['/product-details']);
+    else
+    this.router.navigate(['/home']);
+    new HeaderComponent(this.adminService, this.http).f4();
+  }
+
   f2(){
-    this.adminService.name_val = this.userDetails['details'][this.email]['name'];
+    this.adminService.id_val = this.email
     this.adminService.admin=true;
     this.adminService.add_cart=false;
     this.adminService.add_cart2=false;

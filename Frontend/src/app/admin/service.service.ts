@@ -8,6 +8,6 @@ export class AdminService {
  add_cart=false;
  add_cart2=false;
  add_cart3=false;
-name_val='';
-  constructor() { }
+ id_val='';
+ constructor() { }
 }
