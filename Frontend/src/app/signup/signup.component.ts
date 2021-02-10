@@ -39,17 +39,13 @@ export class SignupComponent implements OnInit {
       this.userData = data;
       if(this.userData['user'] == 'Already Exists') {
         console.log("Email already registered!");
-        this.showAlert();
-
+        this.showAlert();        
         this.router.navigate(['/login']);
-
       }
       else {
         this.userRegistered();
         console.log("User registered!");
-
         this.f2();
-
         this.router.navigate(['/home']);
       }
     })

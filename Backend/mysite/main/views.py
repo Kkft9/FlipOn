@@ -6,7 +6,7 @@ import json
 
 DB = settings.DB_FILE
 
-from db import readDB, writeDB
+from db import  readmongoDB , writemongoDB, updatemongoDB
 
 # Create your views here.
 
@@ -42,51 +42,60 @@ def hello(request):
 #             o = dictObj['obj']
 #             writeDB(obj=o, loc='women', filename = DB)
 #         return JsonResponse({"request" : "posted in women section"})
+import pymongo
+from bson import ObjectId
+
+
+
+
 
 @csrf_exempt
 def signup(request) :
     if request.method == 'GET' :
-        data = readDB(filename = DB)
-        req = data['database']['user']
-        res = {'details' : req}
+        customers=readmongoDB('Customer').find({},{"_id": 0})
+        x   = []
+        for i in customers:
+            x.append(i)
+        print(customers)
+        res = {'details' : x}
         return JsonResponse(res)
 
     elif request.method == 'POST' :
         dictObj = json.loads(request.body)
         email = dictObj['email']
         password = dictObj['password']
-        data = readDB(filename = DB)
-        req = data['database']['user']
-        if email in req :
-            # print(True)
+        customer_count=readmongoDB('Customer').find({"email":email},{"_id": 0}).count()
+        
+        if customer_count!=0 :
             return JsonResponse({'user' : "Already Exists"})
         else :
-            o = {dictObj['email'] : {'name' : dictObj['name'] , 'number' : dictObj['number'] , 'password' : dictObj['password'], 'cart':[] , 'price':0}}
-            writeDB(o , 'user' , DB)
-            # print(False)
+            dictObj.update({"cart":[]})
+            dictObj.update({"price":0})
+            writemongoDB('Customer', dictObj)
             return JsonResponse({'user' : "User Registered"})
 
 
 @csrf_exempt
 def login(request) :
     if request.method == 'GET' :
-        data = readDB(filename = DB)
-        req = data['database']['user']
-        res = {'details' : req}
-        return JsonResponse(res)
+        customers=readmongoDB('Customer').find({},{"_id": 0})
+        x   = {}
+        for i in customers:
+            x.update({i['email']:i})
+        # print(customers)
+        print(x)
+        return JsonResponse(x)
 
     elif request.method == 'POST' :
         dictObj = json.loads(request.body)
         email = dictObj['email']
         password = dictObj['password']
-        # print(email + "     " + password)
-        data = readDB(filename = DB)
-        req = data['database']['user']
-        if email not in req:
+        customer=readmongoDB('Customer').find({"email":email},{"_id": 0})
+
+        if customer.count()==0:
             return JsonResponse({'user' : "New"})
 
-        elif email in req and password==req[email]['password'] :
-            print(True)
+        elif readmongoDB('Customer').find({"email":email, "password":password},{"_id": 0}).count()==1:
             return JsonResponse({'user' : "True"})
 
         else :
@@ -99,61 +108,44 @@ def profile(request) :
     if request.method == 'POST' :
         dictObj = json.loads(request.body)
         email = dictObj['email']
-        data = readDB(filename = DB)
-        req =  data['database']['user'][email]
-        req['number']= dictObj['number']
-        req['name']= dictObj['name']
-        o={email:req}
-        
-        writeDB(o, 'user', filename=DB)
-        return JsonResponse(data)
+        updatemongoDB('Customer', {"email":email},dictObj)
+        return JsonResponse(dictObj)
 
 @csrf_exempt
 def cart(request) :
+
     if request.method == 'POST' :
         dictObj = json.loads(request.body)
-        if 'content' not in dictObj and 'coupon' not in dictObj:
+        
+        if 'title' not in dictObj and 'code' not in dictObj:
             email = dictObj['email']
-            data = readDB(filename = DB)
-            req = data['database']['user'][email]['cart']
-            res = {'cart' : req, 'price': data['database']['user'][email]['price']}
+            data = readmongoDB('Customer').find_one({"email":email},{"_id": 0})
+            res = {'cart' : data['cart'], 'price': data['price']}
             return JsonResponse(res) 
         
-        elif 'content' in dictObj: 
+        elif 'title' in dictObj: 
             email = dictObj['email']
-            data = readDB(filename = DB)
-            
-          
-           
-            req = data['database']['user'][email]['cart']
-            print(req)
-            for i in reversed(req):
-                if i['content'] == dictObj['content']:
-                    req.remove(i)
-                    data['database']['user'][email]['price']= data['database']['user'][email]['price']-i['price']
+            data = readmongoDB('Customer').find_one({"email":email},{"_id": 0})
+            new_cart = data['cart']
+            new_price = data['price']
+            print(dictObj)
+            for i in reversed(data['cart']):
+
+                if i['title'] == dictObj['title']:
+                    new_cart.remove(i)
+                    new_price= data['price']-i['price']
                     break
+            print(new_cart)        
             # req = data['database']['user'][email]['cart']
-            res = {'cart' : req, 'price': data['database']['user'][email]['price']}
-            print(req)
-            print(res)
-            with open(DB, mode='w') as f:
-                json.dump(data, f)
+            updatemongoDB('Customer', {"email":email},{"cart":new_cart})
+            updatemongoDB('Customer', {"email":email},{"price":new_price})
 
-            return JsonResponse(res)
+            return JsonResponse({"cart":new_cart, "price":new_price})
 
-        else:
-            email = dictObj['email']
-            data = readDB(filename = DB)
-            
-            req = data['database']['coupon']
-            res = {'cart' : req}
-            
-            if req== dictObj['coupon']:
-            
-           
-
+        elif 'code' in dictObj:
+            code=dictObj['code']
+            if readmongoDB('Coupon_Code').find({"code":code},{"_id": 0}).count()==1:
                 return JsonResponse({"response":"true"})
-
             else:
                  return JsonResponse({"response":"false"})
 
@@ -163,13 +155,13 @@ def men(request):
      if request.method == 'POST' :
         dictObj = json.loads(request.body)
         email = dictObj['email']
-        data = readDB(filename = DB)
-        req = data['database']['user'][email]['cart']
-        data['database']['user'][email]['price']= data['database']['user'][email]['price']+dictObj['cart']['price']
-        req.append(dictObj['cart'])
+        data = readmongoDB('Customer').find_one({"email":email},{"_id":0})
+        new_cart = data['cart']
+        new_price = data['price']
+        new_price += dictObj['cart']['price']
+        new_cart.append(dictObj['cart'])
+        updatemongoDB('Customer', {"email":email},{"cart":new_cart})
+        updatemongoDB('Customer', {"email":email},{"price":new_price})
 
-        with open(DB, mode='w') as f:
-            json.dump(data, f)
-
-        return JsonResponse(data) 
+        return JsonResponse(dictObj) 
 

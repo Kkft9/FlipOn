@@ -10,6 +10,7 @@ import { HeaderComponent } from '../header/header.component';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
   email = "";
   password = "";
@@ -17,27 +18,17 @@ export class LoginComponent implements OnInit {
   postData = {};
   userData : any;
 
-  constructor(public adminService: AdminService,  public http : HttpClient ,public router: Router,public alertCtrl: AlertController ) {
-    this.http.get("http://127.0.0.1:8000/login/").subscribe(data =>{
-      this.userDetails = data;
-      // console.log(this.userDetails);
-    })
-  }
+  constructor(public adminService: AdminService,  public http : HttpClient ,public router: Router,public alertCtrl: AlertController ){}
 
   ngOnInit(): void {
   }
 
-
-
   login() {
     // console.log(this.email + "  " + this.password);
-
     this.postData = {
       'email' : this.email ,
       'password' : this.password
     }
-
-
     this.http.post("http://127.0.0.1:8000/login/" , this.postData).subscribe(data =>{
       // console.log(data);
       this.userData = data;
@@ -56,9 +47,7 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  navigator_decider()
-  {
-
+  navigator_decider(){
     if(this.adminService.add_cart==true)
     this.router.navigate(['/men']);
     else if(this.adminService.add_cart2==true)
@@ -88,6 +77,7 @@ export class LoginComponent implements OnInit {
     const result = await alert.onDidDismiss();
     console.log(result);
   }
+  
   async userNew() {
     const alert = await this.alertCtrl.create({
       header: 'Error',

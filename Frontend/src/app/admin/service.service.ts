@@ -4,10 +4,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AdminService {
- admin=false;
- add_cart=false;
- add_cart2=false;
- add_cart3=false;
- id_val='';
- constructor() { }
+admin=false;
+add_cart=false;
+add_cart2=false;
+add_cart3=false;
+id_val='';
+constructor() { }
 }

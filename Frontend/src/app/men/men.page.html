@@ -15,7 +15,7 @@
                       <h5 class="card-title"  style="color: rgb(235, 25, 25);">Formals-1</h5>
                       <h5 class="card-title"  style=" font-weight: bolder; color: rgb(235, 25, 25);">Color-Blue @ Rs.2000/-</h5>
 
-                      <a style="color: white;"  *ngIf="adminService.admin" (click)="showAlert()" (click)="add_to_cart('Formals-1','Color-Blue',2000)"class="btn btn-danger">Add to Cart</a>
+                      <a style="color: white;"  *ngIf="adminService.admin" (click)="showAlert()" (click)="add_to_cart('Color-Blue','Formals-1',2000)"class="btn btn-danger">Add to Cart</a>
                       <a style="color: white;"  *ngIf="!adminService.admin"  (click)="f1()"  routerLink="/login"  class="btn btn-danger">Add to Cart</a>
                     </span>
 
@@ -35,7 +35,7 @@
                     <h5 class="card-title"  style="color: rgb(235, 25, 25);">Formals-2</h5>
                     <h5 class="card-title"  style=" font-weight: bolder; color: rgb(235, 25, 25);">Color-Red @ Rs.1500/-</h5>
 
-                    <a style="color: white;"  *ngIf="adminService.admin"(click)="add_to_cart('Formals-2','Color-Red',1500)" (click)="showAlert()" class="btn btn-danger">Add to Cart</a>
+                    <a style="color: white;"  *ngIf="adminService.admin"(click)="add_to_cart('Color-Red','Formals-2',1500)" (click)="showAlert()" class="btn btn-danger">Add to Cart</a>
                   <a style="color: white;"  *ngIf="!adminService.admin"  (click)="f1()" routerLink="/login" class="btn btn-danger">Add to Cart</a>
                   </span>
 
@@ -54,7 +54,7 @@
                   <h5 class="card-title"  style="color: rgb(235, 25, 25);">Formals-3</h5>
                   <h5 class="card-title"  style=" font-weight: bolder; color: rgb(235, 25, 25);">Color-Green @ Rs.2500/-</h5>
 
-                  <a style="color: white;"  *ngIf="adminService.admin" (click)="showAlert()" (click)="add_to_cart('Formals-3','Color-Green',2500)"class="btn btn-danger">Add to Cart</a>
+                  <a style="color: white;"  *ngIf="adminService.admin" (click)="showAlert()" (click)="add_to_cart('Color-Green','Formals-3',2500)"class="btn btn-danger">Add to Cart</a>
                   <a style="color: white;"  *ngIf="!adminService.admin"   routerLink="/login"  (click)="f1()"class="btn btn-danger">Add to Cart</a>
                 </span>
 
