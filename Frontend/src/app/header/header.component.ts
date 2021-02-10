@@ -36,8 +36,7 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  f2()
-  {
+  f2(){
     this.adminService.admin=false;
   }
 
