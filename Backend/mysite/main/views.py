@@ -10,9 +10,6 @@ from db import  readmongoDB , writemongoDB, updatemongoDB
 
 # Create your views here.
 
-def hello(request):
-    return HttpResponse("<h1>Hello</h1>")
-
 # @csrf_exempt
 # def funMen(request):
 #     if request.method == 'GET' :
@@ -46,17 +43,14 @@ import pymongo
 from bson import ObjectId
 
 
-
-
-
 @csrf_exempt
 def signup(request) :
     if request.method == 'GET' :
         customers=readmongoDB('Customer').find({},{"_id": 0})
         x   = []
-        for i in customers:
-            x.append(i)
-        print(customers)
+        for customer in customers:
+            x.append(customer)
+        # print(customers)
         res = {'details' : x}
         return JsonResponse(res)
 
@@ -66,7 +60,7 @@ def signup(request) :
         password = dictObj['password']
         customer_count=readmongoDB('Customer').find({"email":email},{"_id": 0}).count()
         
-        if customer_count!=0 :
+        if customer_count > 0 :
             return JsonResponse({'user' : "Already Exists"})
         else :
             dictObj.update({"cart":[]})
@@ -80,8 +74,9 @@ def login(request) :
     if request.method == 'GET' :
         customers=readmongoDB('Customer').find({},{"_id": 0})
         x   = {}
-        for i in customers:
-            x.update({i['email']:i})
+        for customer in customers:
+            x.update({customer['email']:customer})
+            # x[customer['email']] = customer
         # print(customers)
         print(x)
         return JsonResponse(x)
@@ -99,7 +94,7 @@ def login(request) :
             return JsonResponse({'user' : "True"})
 
         else :
-            print(False)
+            # print(False)
             return JsonResponse({'user' : "False"})
 
 @csrf_exempt
@@ -130,12 +125,11 @@ def cart(request) :
             new_price = data['price']
             print(dictObj)
             for i in reversed(data['cart']):
-
                 if i['title'] == dictObj['title']:
                     new_cart.remove(i)
                     new_price= data['price']-i['price']
                     break
-            print(new_cart)        
+            # print(new_cart)        
             # req = data['database']['user'][email]['cart']
             updatemongoDB('Customer', {"email":email},{"cart":new_cart})
             updatemongoDB('Customer', {"email":email},{"price":new_price})
