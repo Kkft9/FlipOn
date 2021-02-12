@@ -1,123 +1,99 @@
 
 <!-- List of Text Items -->
+<ion-header>
+  <ion-toolbar class="m-1 p-1">
+    <ion-title style="text-align: center; color: rgb(235, 75, 83); font-size: xx-large;"><b>Cart Details</b></ion-title>
+  </ion-toolbar>
+</ion-header>
 
-<ion-grid>
+<!-- <ion-content> -->
+  <ion-grid>
 
-  <ion-row>
-    <ion-col>
-      <div style="padding:2%; padding-bottom: 0%; font-size:xx-large; font-weight: bolder; font:900; margin-left: 3%; " >
-      Cart Details
-      </div>
-    </ion-col>
-  </ion-row>
+    <ion-row >
+      <ion-col size="8"  >
 
-  <ion-row >
-    <ion-col size="8"  >
+              <div class = "card m-5 p-2 mx-auto" style="box-shadow: 2px 1px #888888; padding: 2%; margin: 3%;" *ngFor="let card of cardContent">
+                <ion-row>
 
-            <div style="border:gray; border-style: ridge; border-width: 2px; padding: 2%; margin: 3%;" *ngFor="let card of cardContent">
-              <ion-row>
-
-               <ion-col size="4">
-               <img src="../../assets/i1.jpg"  class="card-img-top img-fluid" >
-               </ion-col>
-
-               <ion-col size="5" style=" padding-left: 5%;">
-                  <h2 style="font-family:cursive;font-size:larger;">{{card['title']}}</h2>
-                  <p style="color: gray; font-family: cursive;">{{card.content}} <p>
-                  <ion-input  style="border: grey; border-width: 1px; border-style:inset; max-width: 25%;" value="1" type="number">
-                  </ion-input>
+                <ion-col size="4">
+                <img src="../../assets/i1.jpg"  class="card-img-top img-fluid" >
                 </ion-col>
 
-                <ion-col size="3"  >
-                  <h2 style="font-family:cursive; font-size:larger;">Rs.{{card.price}}</h2>
-                  <p style="color: gray; font-size: small;font-family: cursive;">(Inclusive of all taxes) <p>
-                  <button type="button" class="btn btn-danger " (click)="delete(card.title)" style="font-size: smaller ;position: absolute; " >Remove From Cart</button>
-                </ion-col>
+                <ion-col size="5" style=" padding-left: 5%;">
+                    <h2 style="font-size:larger;">{{card['title']}}</h2>
+                    <p style="color: gray; ">{{card.content}} <p>
+                    <ion-input  style="border: grey; border-width: 1px; border-style:inset; max-width: 25%;" value="1" type="number">
+                    </ion-input>
+                  </ion-col>
 
-              </ion-row>
-            </div>
+                  <ion-col size="3"  >
+                    <h2 style=" font-size:larger;">Rs.{{card.price}}</h2>
+                    <p style="color: gray; font-size: small;">(Inclusive of all taxes) <p>
+                    <button type="button" class="btn btn-danger " (click)="delete(card.title)" style="font-size: medium ;position: absolute; " >Remove From Cart</button>
+                  </ion-col>
 
-            <!-- <div style="border:gray; border-style: ridge; border-width: 2px; padding: 2%; margin: 3%;">
-              <ion-row>
+                </ion-row>
+              </div>
 
-               <ion-col size="4">
-               <img src="../../assets/i1.jpg">
-               </ion-col>
+              <div class="text-center">
+              <button type="button" class="btn btn-danger" routerLink="/home" >Continue Shopping</button>
+              </div>
 
-               <ion-col size="5" style=" padding-left: 5%;">
-                  <h2 style="font-family:cursive; font-size:larger;">Formals-2</h2>
-                  <p style="color: gray; font-family: cursive;">Color: Red <p>
-                  <ion-input  style="border: grey; border-width: 1px; border-style:inset; max-width: 25%;" value="1" type="number">
-                  </ion-input>
-                </ion-col>
-
-                <ion-col size="3" style=" padding-top: 5%;" >
-                  <h2 style="font-family:cursive; font-size:larger;">Rs. 2,000</h2>
-                  <p style="color: gray; font-size: small;font-family: cursive;">(Inclusive of all taxes) <p>
-                </ion-col>
-
-              </ion-row>
-            </div> -->
-
-            <div>
-            <button type="button" class="btn btn-outline-primary " style="position: absolute; right: 0;" routerLink="/home" >Continue Shopping</button>
-            </div>
-
-            <br>
-            <br>
-
-    </ion-col>
-
-    <ion-col size="4" >
-      <ion-row>
-        <ion-col>
-          <h2 style="font-family:cursive; font-size:large">Apply Coupon Code</h2>
-
-            <ion-row>
-              <div class="input-group mb-3">
-              <ion-col size="10">
-            <input type="text" class="form-control" [(ngModel)]="coupon" placeholder="Apply Coupon Code" style="max-width: fit content;" >
-              </ion-col>
-              <ion-col size="2">
-              <button type="button" class="btn btn-outline-primary " (click)="coupon_code()" style="position: absolute; right: 0;" >APPLY</button>
-            </ion-col>
-            </div>
-          </ion-row>
-        </ion-col>
-      </ion-row>
-
-
-      <ion-row  style="background-color: lightcyan; padding: 5%;"  >
-
-          <h2 style="font-family:cursive; font-size:large; padding-top: 0%;  font-weight: bolder;">ORDER SUMMARY</h2>
-          <ion-col size="8">
-          <br>
-              <p style="font-family: cursive;">Cart Total</p>
-              <p style="font-family: cursive;">Shopping Charges</p>
-              <p style="font-family: cursive;">Coupon Discount</p>
-              <h4 style="font-family: cursive; padding-top: 2%; font-weight: bolder;">Total Payable </h4>
-           </ion-col>
-            <ion-col size="4">
               <br>
-              <p style="font-family: cursive;">Rs.{{CartTotal}} </p>
-              <p style="font-family: cursive;">Free </p>
-               <p style="font-family: cursive; color: blue;">Rs. {{discount}} </p>
-              <h4 style="font-family: cursive; padding-top: 2%; font-weight: bolder;">Rs. {{final_price()}} </h4>
+              <br>
+
+      </ion-col>
+
+      <ion-col size="4" >
+        <ion-row>
+          <ion-col class="card mb-3" style="background-color: rgb(233, 233, 233); padding: 5%; box-shadow: 2px 1px #888888;">
+            <h2 style=" font-size:large"><b>Apply Coupon Code</b></h2>
+
+              <ion-row>
+                <div class="input-group mb-3">
+                <ion-col size="9">
+              <input type="text" class="form-control" [(ngModel)]="coupon" placeholder="Apply Coupon Code" style="max-width: fit content;" >
+                </ion-col>
+                <ion-col size="2" class="mx-2">
+                <button type="button" class="btn btn-outline-danger " (click)="coupon_code()" style="position: absolute; right: 0;" >APPLY</button>
               </ion-col>
-              <ion-col>
-                <br>
-              <button type="button" class="btn btn-outline-primary  btn-block">SECURE CHECKOUT NOW</button>
+              </div>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row style="background-color: rgb(233, 233, 233); padding: 5%; box-shadow: 2px 1px #888888;"  >
+
+            <h2 style=" font-size:large; padding-top: 0%;  font-weight: bolder;">ORDER SUMMARY</h2>
+            <ion-col size="8">
+            <br>
+                <p>Cart Total</p>
+                <p >Shopping Charges</p>
+                <p >Coupon Discount</p>
+                <h4 style=" padding-top: 2%; font-weight: bolder;">Total Payable </h4>
             </ion-col>
-          </ion-row>
+              <ion-col size="4">
+                <br>
+                <p >Rs.{{CartTotal}} </p>
+                <p>Free </p>
+                <p style=" color: rgb(235, 75, 83);">Rs. {{discount}} </p>
+                <h4 style=" padding-top: 2%; font-weight: bolder;">Rs. {{final_price()}} </h4>
+                </ion-col>
+                <ion-col class="text-center p-1">
+                  <br>
+                <button type="button" class="btn btn-outline-danger" >SECURE CHECKOUT NOW</button>
+              </ion-col>
+            </ion-row>
 
 
 
-    </ion-col>
+      </ion-col>
 
-    <ion-col> <br> </ion-col>
-  </ion-row>
+      <ion-col> <br> </ion-col>
+    </ion-row>
 
 
-</ion-grid>
-
+  </ion-grid>
+<!-- </ion-content> -->
 
