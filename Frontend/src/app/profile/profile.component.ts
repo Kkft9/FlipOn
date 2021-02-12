@@ -37,8 +37,19 @@ export class ProfileComponent implements OnInit{
       // console.log(data);
       new HeaderComponent(this.adminService, this.http, this.alertCtrl).f4();
     })
+    this.update_details();
   }
 
+  async update_details() {
+    const alert = await this.alertCtrl.create({
+      header: 'Congratulations',
+      message: 'Profile Updated!',
+      buttons: ['OK']
+    });
+    await alert.present();
+    const result = await alert.onDidDismiss();
+    console.log(result);
+  }
 
   ngOnInit(): void {
   }

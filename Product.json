@@ -5,8 +5,8 @@
   "id": "men",
   "title": "Gristone's Men's Shirt",
   "content": "Regular Fit Casual Shirt",
-  "price": "379",
-  "stars": "3",
+  "price": 379,
+  "stars": 3,
   "imageSource": "http://127.0.0.1:8000/static/men-1.jpg"
 },{
   "_id": {
@@ -15,8 +15,8 @@
   "id": "men",
   "title": "Tommy Hilfiger Men's T-shirt",
   "content": "Cotton Reglar Fit T-shirt",
-  "price": "699",
-  "stars": "4",
+  "price": 699,
+  "stars": 4,
   "imageSource": "http://127.0.0.1:8000/static/men-3.jpg"
 },{
   "_id": {
@@ -25,8 +25,8 @@
   "id": "men",
   "title": "Skyben Men's T-shirt",
   "content": "Outdoorsy Reglar Fit T-shirt",
-  "price": "115",
-  "stars": "4",
+  "price": 115,
+  "stars": 4,
   "imageSource": "http://127.0.0.1:8000/static/men-2.jpg"
 },{
   "_id": {
@@ -35,8 +35,8 @@
   "id": "men",
   "title": "BENSTOKE Men's Kurta",
   "content": "Cotton Regular Kurta",
-  "price": "499",
-  "stars": "4",
+  "price": 499,
+  "stars": 4,
   "imageSource": "http://127.0.0.1:8000/static/men-4.jpg"
 },{
   "_id": {
@@ -45,8 +45,8 @@
   "id": "men",
   "title": "Kart Trade Men's Cargos",
   "content": "Cotton Regular Fit Cargos",
-  "price": "799",
-  "stars": "4",
+  "price": 799,
+  "stars": 4,
   "imageSource": "http://127.0.0.1:8000/static/men-5.jpg"
 },{
   "_id": {
@@ -55,8 +55,8 @@
   "id": "men",
   "title": "Peter England Men's Blazer",
   "content": "Notch Lapel Slim Blazer",
-  "price": "2299",
-  "stars": "4",
+  "price": 2299,
+  "stars": 4,
   "imageSource": "http://127.0.0.1:8000/static/men-6.jpg"
 },{
   "_id": {
@@ -65,8 +65,8 @@
   "id": "men",
   "title": "98 degree Sweater",
   "content": "North Sustainable Round Neck Sweater",
-  "price": "869",
-  "stars": "5",
+  "price": 869,
+  "stars": 5,
   "imageSource": "http://127.0.0.1:8000/static/men-7.jpg"
 },{
   "_id": {
@@ -75,8 +75,8 @@
   "id": "women",
   "title": "Women's Rayon Kurti",
   "content": " Straight Kurti with White Sharara Plazzo",
-  "price": "899",
-  "stars": "5",
+  "price": 899,
+  "stars": 5,
   "imageSource": "http://127.0.0.1:8000/static/women-1.jpg"
 },{
   "_id": {
@@ -85,8 +85,8 @@
   "id": "women",
   "title": "Harpa Women's A-Line Knee-Long Dress",
   "content": "100% Polyester three quarter sleeve",
-  "price": "699",
-  "stars": "3",
+  "price": 699,
+  "stars": 3,
   "imageSource": "http://127.0.0.1:8000/static/women-2.jpg"
 },{
   "_id": {
@@ -95,8 +95,8 @@
   "id": "women",
   "title": "AELOMART Women's Top",
   "content": "Round Neck Regular Fit",
-  "price": "449",
-  "stars": "4",
+  "price": 449,
+  "stars": 4,
   "imageSource": "http://127.0.0.1:8000/static/women-3.jpg"
 },{
   "_id": {
@@ -105,8 +105,8 @@
   "id": "women",
   "title": "Vbuyz Women's Rayon Straight Kurti",
   "content": "Rayon 3/4 Sleeve",
-  "price": "590",
-  "stars": "4",
+  "price": 590,
+  "stars": 4,
   "imageSource": "http://127.0.0.1:8000/static/women-4.jpg"
 },{
   "_id": {
@@ -115,8 +115,8 @@
   "id": "women",
   "title": "Devangi Fashion Women's Saree",
   "content": "Kanchipuram Silk Saree With Un-stitched Blouse",
-  "price": "1299",
-  "stars": "3",
+  "price": 1299,
+  "stars": 3,
   "imageSource": "http://127.0.0.1:8000/static/women-5.jpg"
 },{
   "_id": {
@@ -125,8 +125,8 @@
   "id": "watch",
   "title": "SONATA",
   "content": "Black Dial Analog Watch",
-  "price": "1399",
-  "stars": "3",
+  "price": 1399,
+  "stars": 3,
   "imageSource": "http://127.0.0.1:8000/static/watch-1.jpg"
 },{
   "_id": {
@@ -135,8 +135,8 @@
   "id": "watch",
   "title": "FOSSIL",
   "content": "Fitness Touchscreen Black Watch",
-  "price": "8000",
-  "stars": "4",
+  "price": 8000,
+  "stars": 4,
   "imageSource": "http://127.0.0.1:8000/static/watch-2.jpg"
 },{
   "_id": {
@@ -145,8 +145,8 @@
   "id": "watch",
   "title": "TOMMY HILFIGER",
   "content": "Analog Blue Dial Watch",
-  "price": "8999",
-  "stars": "5",
+  "price": 8999,
+  "stars": 5,
   "imageSource": "http://127.0.0.1:8000/static/watch-3.jpg"
 },{
   "_id": {
@@ -155,8 +155,8 @@
   "id": "watch",
   "title": "POLICE",
   "content": "Analog Black Dial Watch",
-  "price": "14500",
-  "stars": "2",
+  "price": 14500,
+  "stars": 2,
   "imageSource": "http://127.0.0.1:8000/static/watch-4.jpg"
 },{
   "_id": {
@@ -165,8 +165,8 @@
   "id": "watch",
   "title": "FOSSIL",
   "content": "Machine Chronography Watch",
-  "price": "9495",
-  "stars": "4",
+  "price": 9495,
+  "stars": 4,
   "imageSource": "http://127.0.0.1:8000/static/watch-5.jpg"
 },{
   "_id": {
@@ -175,7 +175,7 @@
   "id": "women",
   "title": "Regolith Designer Women's Sarees",
   "content": "Banarasi Cotton Silk Saree With Blouse Piece",
-  "price": "2999",
-  "stars": "4",
+  "price": 2999,
+  "stars": 4,
   "imageSource": "http://127.0.0.1:8000/static/women-6.jpg"
 }]

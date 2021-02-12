@@ -28,12 +28,12 @@ def readmongoDB(collection):
 def writemongoDB(collection, obj):
     myclient = pymongo.MongoClient("mongodb://localhost:27017/")
     Shopping_Dashboard = myclient["Shopping_Dashboard"]
-    Collection=Shopping_Dashboard[collection]
+    Collection = Shopping_Dashboard[collection]
     Collection.insert_one(obj)    
     
 def updatemongoDB(collection,condition, obj):
     myclient = pymongo.MongoClient("mongodb://localhost:27017/")
     Shopping_Dashboard = myclient["Shopping_Dashboard"]
-    Collection=Shopping_Dashboard[collection]
-    Collection.update_one(condition,{"$set":obj})   
+    Collection = Shopping_Dashboard[collection]
+    Collection.update_one(condition , {"$set":obj})   
 

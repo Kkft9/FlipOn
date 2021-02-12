@@ -1,12 +1,12 @@
-<div class="card p-2 m-5 mx-auto text-center" style="width: 40%;">
+<div class="card p-2 m-5 mx-auto text-center" style="width: 40%;  box-shadow: 2px 1px #888888;">
   <div class="card-body">
       <h4 class="card-title"><b>My Profile</b></h4>
       <form>
           <p> <input type="text" style="width: 75%; border: none; border-bottom: 1px solid #eb445a;" name="fname"   [(ngModel)]="name" required> </p>
-          <p> <input type="email" style="width: 75%;font-weight: bolder; border: none; border-bottom: 1px solid #eb445a;" name="email"  disabled="disabled"  value={{this.adminService.id_val}} required> </p>
+          <p> <input type="email" style="width: 75%;font-weight: bolder; border: none; border-bottom: 1px solid #eb445a;" name="email"  value={{this.adminService.id_val}} required> </p>
           <p> <input type="text" style="width: 75%; border: none; border-bottom: 1px solid #eb445a;" name="phone" [(ngModel)]="number" required> </p>
-          <button type="submit" class="btn btn-danger" routerLink="/home"(click)="profile_update()" >Update</button><p></p>
-          <a href="#" style = "font-size: 15; color: #326a9e;">Change Password</a>
+          <button type="submit" class="btn btn-danger" (click)="profile_update()" >Update</button><p></p>
+          <a href="#" style = "font-size: 15; color: #326a9e;" routerLink="/change-password" >Change Password</a>
         </form>
     </div>
 </div>
