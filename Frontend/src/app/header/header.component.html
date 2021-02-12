@@ -18,8 +18,9 @@
 
   <ul class="navbar-nav" style="margin-left: auto;"  >
     <form class="form-inline my-2 my-lg-0 mx-2">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-danger  my-2 my-sm-0"  type="submit">Search</button>
+      <input class="form-control mr-sm-2" type="search" name="search" [(ngModel)]="search_value" placeholder="Search" aria-label="Search" >
+      <!-- <input class="form-control mr-sm-2" type="search" [(ngModel)]="search_value"placeholder="Search" aria-label="Search"> -->
+      <button class="btn btn-danger  my-2 my-sm-0" (click)="search()" routerLink="/search"  type="submit">Search</button>
     </form>
       <li class="nav-item dropdown mx-2">
           <a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="https://cdn3.iconfinder.com/data/icons/flatastic-4-1/256/user_red-256.png" width="30" height="30" alt="user"></a>

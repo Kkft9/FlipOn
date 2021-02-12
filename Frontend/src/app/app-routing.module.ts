@@ -41,6 +41,22 @@ const routes: Routes = [
     path: 'product-details',
     loadChildren: () => import('./product-details/product-details.module').then( m => m.ProductDetailsPageModule)
   },
+  {
+    path: 'offers',
+    loadChildren: () => import('./offers/offers.module').then( m => m.OffersPageModule)
+  },
+  {
+    path: 'women',
+    loadChildren: () => import('./women/women.module').then( m => m.WomenPageModule)
+  },
+  {
+    path: 'watches',
+    loadChildren: () => import('./watches/watches.module').then( m => m.WatchesPageModule)
+  },
+  {
+    path: 'search',
+    loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
+  }
 
 
 ];

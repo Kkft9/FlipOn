@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 p-5"  style="text-align:center" *ngFor="let card of staticname">
+
+      <app-card [imageSource]="card.imageSource" [numberOfFullStars]=card.stars [price]=card.price   routerLink="/product-details" [title]="card.title" [content]="card.content" ></app-card>
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+ </div>

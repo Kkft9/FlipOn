@@ -3,6 +3,8 @@ from django.http import HttpResponse, JsonResponse
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 import json
+import pymongo
+
 
 DB = settings.DB_FILE
 
@@ -42,11 +44,6 @@ def hello(request):
 #             o = dictObj['obj']
 #             writeDB(obj=o, loc='women', filename = DB)
 #         return JsonResponse({"request" : "posted in women section"})
-import pymongo
-from bson import ObjectId
-
-
-
 
 
 @csrf_exempt
@@ -63,7 +60,6 @@ def signup(request) :
     elif request.method == 'POST' :
         dictObj = json.loads(request.body)
         email = dictObj['email']
-        password = dictObj['password']
         customer_count=readmongoDB('Customer').find({"email":email},{"_id": 0}).count()
         
         if customer_count!=0 :
@@ -71,6 +67,7 @@ def signup(request) :
         else :
             dictObj.update({"cart":[]})
             dictObj.update({"price":0})
+            dictObj.update({"discount":0})
             writemongoDB('Customer', dictObj)
             return JsonResponse({'user' : "User Registered"})
 
@@ -120,7 +117,7 @@ def cart(request) :
         if 'title' not in dictObj and 'code' not in dictObj:
             email = dictObj['email']
             data = readmongoDB('Customer').find_one({"email":email},{"_id": 0})
-            res = {'cart' : data['cart'], 'price': data['price']}
+            res = {'cart' : data['cart'], 'price': data['price'], 'discount': data['discount']}
             return JsonResponse(res) 
         
         elif 'title' in dictObj: 
@@ -135,24 +132,26 @@ def cart(request) :
                     new_cart.remove(i)
                     new_price= data['price']-i['price']
                     break
-            print(new_cart)        
+            # print(new_cart)        
             # req = data['database']['user'][email]['cart']
             updatemongoDB('Customer', {"email":email},{"cart":new_cart})
             updatemongoDB('Customer', {"email":email},{"price":new_price})
 
-            return JsonResponse({"cart":new_cart, "price":new_price})
+            return JsonResponse({"cart":new_cart, "price":new_price, 'discount': data['discount']})
 
         elif 'code' in dictObj:
             code=dictObj['code']
+            email=dictObj['email']
+            data = readmongoDB('Customer').find_one({"email":email},{"_id": 0})
             if readmongoDB('Coupon_Code').find({"code":code},{"_id": 0}).count()==1:
-                return JsonResponse({"response":"true"})
+                return JsonResponse({"response":"true" ,"discount" :data['discount'] })
             else:
-                 return JsonResponse({"response":"false"})
+                 return JsonResponse({"response":"false"}) 
 
 
 @csrf_exempt
 def men(request):
-     if request.method == 'POST' :
+    if request.method == 'POST' :
         dictObj = json.loads(request.body)
         email = dictObj['email']
         data = readmongoDB('Customer').find_one({"email":email},{"_id":0})
@@ -162,6 +161,90 @@ def men(request):
         new_cart.append(dictObj['cart'])
         updatemongoDB('Customer', {"email":email},{"cart":new_cart})
         updatemongoDB('Customer', {"email":email},{"price":new_price})
-
         return JsonResponse(dictObj) 
 
+    elif request.method == 'GET' :
+        
+        products=readmongoDB('Product').find({"id":"men"},{"_id": 0}) 
+        product   = []
+        for i in products:
+            product.append(i)
+        return JsonResponse({"details" : product})
+
+@csrf_exempt
+def women(request):
+    if request.method == 'POST' :
+        dictObj = json.loads(request.body)
+        email = dictObj['email']
+        data = readmongoDB('Customer').find_one({"email":email},{"_id":0})
+        new_cart = data['cart']
+        new_price = data['price']
+        new_price += dictObj['cart']['price']
+        new_cart.append(dictObj['cart'])
+        updatemongoDB('Customer', {"email":email},{"cart":new_cart})
+        updatemongoDB('Customer', {"email":email},{"price":new_price})
+        return JsonResponse(dictObj) 
+
+    elif request.method == 'GET' :
+        products=readmongoDB('Product').find({"id":"women"},{"_id": 0}) 
+        product   = []
+        for i in products:
+            product.append(i)
+        return JsonResponse({"details" : product})   
+        
+@csrf_exempt
+def watch(request):
+    if request.method == 'POST' :
+        dictObj = json.loads(request.body)
+        email = dictObj['email']
+        data = readmongoDB('Customer').find_one({"email":email},{"_id":0})
+        new_cart = data['cart']
+        new_price = data['price']
+        new_price += dictObj['cart']['price']
+        new_cart.append(dictObj['cart'])
+        updatemongoDB('Customer', {"email":email},{"cart":new_cart})
+        updatemongoDB('Customer', {"email":email},{"price":new_price})
+        return JsonResponse(dictObj) 
+
+    elif request.method == 'GET' :
+        
+        products=readmongoDB('Product').find({"id":"watch"},{"_id": 0}) 
+        product   = []
+        for i in products:
+            product.append(i)
+        print(product)
+        return JsonResponse({"details" : product})  
+
+
+@csrf_exempt
+def offers(request) :
+    if request.method == 'POST' :
+        dictObj = json.loads(request.body)
+        email = dictObj['email']
+        if "discount" in dictObj:
+            updatemongoDB('Customer', {"email":email},{"discount":dictObj['discount']})   
+            return JsonResponse(dictObj)
+        else:
+            data = readmongoDB('Customer').find_one({"email":email},{"_id":0})
+            return JsonResponse({"discount" : data['discount']})
+
+@csrf_exempt
+def search(request) :
+    if request.method == 'POST' :
+        
+        response=[]
+        dictObj = json.loads(request.body) 
+        print(dictObj)
+        search = dictObj['search']
+        products=readmongoDB('Product').find({},{"_id": 0}) 
+        product   = []
+        for i in products:
+            product.append(i)
+
+        for i in product:
+            row=i.values()
+            for j in row:
+                if (' '+search+' ').lower() in (' '+str(j)+' ').lower() :
+                    response.append(i)
+    print(response)
+    return JsonResponse({"details" : response})

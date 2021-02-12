@@ -1,0 +1,21 @@
+<h3 style="font-weight:600; color: red;">The Fortune Spin Wheel</h3>
+<h3>Press the wheel to land on a random Prize</h3>
+<div style="text-align: center;">
+<ngx-wheel
+  #wheel
+  width='400'
+  height='400'
+  spinDuration='8'
+  [items]='items'
+  [innerRadius]='20'
+  [spinAmount]='10'
+  [disableSpinOnClick]="check_and_run"
+  [textOrientation]='textOrientation'
+  [textAlignment]='textAlignment'
+  pointerStrokeColor='yellow'
+  pointerFillColor='blue'
+  [idToLandOn]='idToLandOn'
+  (onSpinStart)='before()'
+  (onSpinComplete)='after()'
+></ngx-wheel>
+</div>

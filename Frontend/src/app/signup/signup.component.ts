@@ -31,7 +31,8 @@ export class SignupComponent implements OnInit {
       'number' : this.number,
       'password' : this.password,
       'cart':[],
-      'price':0
+      'price':0,
+      'discount':0
     }
 
     this.http.post("http://127.0.0.1:8000/signup/" , this.postData).subscribe(data =>{
@@ -39,7 +40,7 @@ export class SignupComponent implements OnInit {
       this.userData = data;
       if(this.userData['user'] == 'Already Exists') {
         console.log("Email already registered!");
-        this.showAlert();        
+        this.showAlert();
         this.router.navigate(['/login']);
       }
       else {
@@ -58,7 +59,7 @@ export class SignupComponent implements OnInit {
     this.adminService.add_cart=false;
     this.adminService.add_cart2=false;
     this.adminService.add_cart3=false;
-     new HeaderComponent(this.adminService, this.http).f4();
+     new HeaderComponent(this.adminService, this.http, this.alertCtrl).f4();
   }
 
   async showAlert() {

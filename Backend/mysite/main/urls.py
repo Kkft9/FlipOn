@@ -17,13 +17,14 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
-    # path("men/", views.funMen, name="funMen"),
-    # path("women/", views.funWomen, name="funWomen"),
     path("", views.hello, name="hello"),
     path("signup/", views.signup, name="signup"),
     path("login/", views.login, name="login"),
     path("profile/", views.profile, name="profile_update"),
     path("cart/", views.cart, name="cart"),
     path("men/", views.men, name="men"),
-
+    path("women/", views.women, name="women"),
+    path("watch/", views.watch, name="watch"),
+    path("offers/", views.offers, name="offers"),
+    path("search/", views.search, name="search"),
 ]

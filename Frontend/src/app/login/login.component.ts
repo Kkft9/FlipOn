@@ -54,9 +54,13 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/cart']);
     else if(this.adminService.add_cart3==true)
     this.router.navigate(['/product-details']);
+    else if(this.adminService.add_cart_watch==true)
+    this.router.navigate(['/watches']);
+    else if(this.adminService.add_cart_women==true)
+    this.router.navigate(['/women']);
     else
     this.router.navigate(['/home']);
-    new HeaderComponent(this.adminService, this.http).f4();
+    new HeaderComponent(this.adminService, this.http, this.alertCtrl).f4();
   }
 
   f2(){
@@ -65,6 +69,9 @@ export class LoginComponent implements OnInit {
     this.adminService.add_cart=false;
     this.adminService.add_cart2=false;
     this.adminService.add_cart3=false;
+    this.adminService.add_cart_women=false;
+    this.adminService.add_cart_watch=false;
+
   }
 
   async showAlert() {
@@ -77,7 +84,7 @@ export class LoginComponent implements OnInit {
     const result = await alert.onDidDismiss();
     console.log(result);
   }
-  
+
   async userNew() {
     const alert = await this.alertCtrl.create({
       header: 'Error',

@@ -1,0 +1,15 @@
+<h3 class="mx-3 my-3" style="font-weight: bold;">WATCHES</h3>
+<div class="container">
+ <div class="row">
+   <div class="col-lg-4 mt-5 pb-3 shadow "  style="text-align:center;" *ngFor="let card of cardContent">
+
+     <app-card [imageSource]="card.imageSource" [price]=card.price  routerLink="/product-details" [title]="card.title" [content]="card.content" [numberOfFullStars]=card.stars ></app-card>
+
+     <a style="color: white;" *ngIf="adminService.admin" (click)="showAlert()" (click)="
+     add_to_cart(card.content,card.title,card.price,card.imageSource)"class="btn btn-danger">Add to Cart</a>
+
+     <a style="color: white;"  *ngIf="!adminService.admin"  (click)="f1()"  routerLink="/login"  class="btn btn-danger">Add to Cart</a>
+
+   </div>
+ </div>
+</div>
