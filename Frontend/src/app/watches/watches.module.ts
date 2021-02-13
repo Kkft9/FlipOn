@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CardComponent} from '../card/card.component'
+import { CardPageModule} from '../card/card.module'
 import { IonicModule } from '@ionic/angular';
 
 import { WatchesPageRoutingModule } from './watches-routing.module';
 
 import { WatchesPage } from './watches.page';
 
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    WatchesPageRoutingModule
+    WatchesPageRoutingModule,CardPageModule
   ],
-  declarations: [WatchesPage,CardComponent]
+  declarations: [WatchesPage]
 })
 export class WatchesPageModule {}

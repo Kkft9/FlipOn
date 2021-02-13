@@ -29,7 +29,7 @@ export class ChangePasswordPage implements OnInit {
 
   changePassword() {
     console.log(this.oldPass + "  " + this.newPass + "  " + this.confirmPass);
-    
+
     if(this.oldPass != this.userDetails[this.adminService.id_val]['password']) {
       this.errorOne();
       return;
@@ -46,7 +46,7 @@ export class ChangePasswordPage implements OnInit {
     }
     this.http.post("http://127.0.0.1:8000/profile/" , this.postData).subscribe(data =>{
       // console.log(data);
-      new HeaderComponent(this.adminService, this.http).f4();
+      new HeaderComponent(this.adminService, this.http, this.alertCtrl).f4();
     })
     this.updateDetails();
     this.router.navigate(['/profile']);

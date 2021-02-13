@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { AdminService } from '../admin/service.service';
 import { HttpClient } from '@angular/common/http';
+import  { ProductDetailsPage} from '../product-details/product-details.page'
 @Component({
   selector: 'app-men',
   templateUrl: './men.page.html',
@@ -10,6 +11,8 @@ import { HttpClient } from '@angular/common/http';
 
 export class MenPage implements OnInit {
   cardContent:any[] = [ ];
+
+
  f1(){
    this.adminService.add_cart=true;
    this.adminService.add_cart3=false
@@ -18,6 +21,12 @@ export class MenPage implements OnInit {
    this.adminService.add_cart_women=false
  }
 
+ search( search_value)
+ {
+
+   new ProductDetailsPage(this.adminService, this.alertCtrl,this.http).searche(search_value);
+
+ }
   postData:any
 
   constructor(public adminService: AdminService, private http: HttpClient, public alertCtrl: AlertController)

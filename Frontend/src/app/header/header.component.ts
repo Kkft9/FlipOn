@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
   search()
   {
     console.log(this.search_value)
-    new SearchPage(this.http,this.alertCtrl).searche(this.search_value);
+    new SearchPage(this.adminService, this.http,this.alertCtrl).searche(this.search_value);
   }
 
   get staticname() {
@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit {
   postData:any
   number=""
   userDetails : any;
-  constructor(public adminService: AdminService,  private http : HttpClient ,public alertCtrl: AlertController  ) {}
+  constructor(public adminService: AdminService,  private http : HttpClient ,public alertCtrl:AlertController  ) {}
 
 
   f1(){

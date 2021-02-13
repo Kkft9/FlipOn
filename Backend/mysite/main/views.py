@@ -209,7 +209,7 @@ def watch(request):
         product   = []
         for i in products:
             product.append(i)
-        print(product)
+        # print(product)
         return JsonResponse({"details" : product})  
 
 
@@ -244,5 +244,23 @@ def search(request) :
                 if (' '+search+' ').lower() in (' '+str(j)+' ').lower() :
                     response.append(i)
                     break
-    print(response)
+    # print(response)
     return JsonResponse({"details" : response})
+
+@csrf_exempt
+def product_details(request) :
+    if request.method == 'POST' :
+        dictObj = json.loads(request.body) 
+        # print(dictObj)
+        search = dictObj['search']
+        products=readmongoDB('Product').find_one({"imageSource":search},{"_id": 0}) 
+        
+        product   = []
+        for i in products:
+            if 'imageSource' in i:
+                product.append( {"imageSource":products[i]})
+        product.pop(0) 
+        # print(product)       
+    return JsonResponse({"details" :product })        
+
+            

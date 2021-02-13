@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CardComponent} from '../card/card.component'
+
 import { IonicModule } from '@ionic/angular';
 import { MenPageRoutingModule } from './men-routing.module';
 import { MenPage } from './men.page';
+
+import { CardPageModule} from '../card/card.module'
 
 @NgModule({
   imports: [
@@ -12,8 +14,9 @@ import { MenPage } from './men.page';
     FormsModule,
     IonicModule,
     MenPageRoutingModule,
+    CardPageModule
 
   ],
-  declarations: [MenPage,CardComponent]
+  declarations: [MenPage]
 })
 export class MenPageModule {}

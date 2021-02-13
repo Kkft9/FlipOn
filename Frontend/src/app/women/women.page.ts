@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { AdminService } from '../admin/service.service';
 import { HttpClient } from '@angular/common/http';
+import  { ProductDetailsPage} from '../product-details/product-details.page'
 @Component({
   selector: 'app-women',
   templateUrl: './women.page.html',
@@ -18,6 +19,12 @@ export class WomenPage implements OnInit {
    this.adminService.add_cart_watch=false
  }
 
+ search( search_value)
+ {
+
+   new ProductDetailsPage(this.adminService, this.alertCtrl,this.http).searche(search_value);
+
+ }
   postData:any
 
   constructor(public adminService: AdminService, private http: HttpClient, public alertCtrl: AlertController)

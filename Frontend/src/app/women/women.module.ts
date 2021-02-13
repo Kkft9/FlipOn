@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CardComponent} from '../card/card.component'
+import { CardPageModule} from '../card/card.module'
 import { IonicModule } from '@ionic/angular';
 
 import { WomenPageRoutingModule } from './women-routing.module';
@@ -13,8 +13,9 @@ import { WomenPage } from './women.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    WomenPageRoutingModule
+    WomenPageRoutingModule,
+    CardPageModule
   ],
-  declarations: [WomenPage,CardComponent]
+  declarations: [WomenPage]
 })
 export class WomenPageModule {}

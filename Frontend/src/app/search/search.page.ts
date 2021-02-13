@@ -1,6 +1,8 @@
+import { AdminService } from '../admin/service.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
+import  { ProductDetailsPage} from '../product-details/product-details.page'
 @Component({
   selector: 'app-search',
   templateUrl: './search.page.html',
@@ -12,7 +14,7 @@ export class SearchPage implements OnInit {
  static searchContent:any[] = [ ];
   // static search: any;
 
-  constructor(public http : HttpClient,public alertCtrl: AlertController)
+  constructor(public adminService: AdminService,public http : HttpClient,public alertCtrl: AlertController)
    {}
 
     get staticname() {
@@ -29,6 +31,13 @@ export class SearchPage implements OnInit {
 
    })
   }
+
+  search( search_value)
+ {
+
+   new ProductDetailsPage(this.adminService, this.alertCtrl,this.http).searche(search_value);
+
+ }
   async showAlert() {
     const alert = await this.alertCtrl.create({
       header: 'Error',
