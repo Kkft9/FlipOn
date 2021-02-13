@@ -10,7 +10,7 @@
 <div class="row mt-1 mx-5">
   <div class="col-lg-3 my-3 mx-5 pb-3"   style="text-align:center; box-shadow: 2px 2px 2px 2px #888888;" *ngFor="let card of cardContent">
 
-    <app-card [imageSource]="card.imageSource" [price]=card.price (click)="search(card.imageSource)" routerLink="/product-details" [title]="card.title" [content]="card.content" [numberOfFullStars]=card.stars class="hover-overlay"></app-card>
+    <app-card [imageSource]="card.imageSource" [price]=card.price (click)="search(card.imageSource)" routerLink="/product-details" [title]="card.title" [content]="card.content" [numberOfFullStars]=card.stars></app-card>
 
     <a style="color: white;" *ngIf="adminService.admin"  (click)="showAlert()" (click)="
     add_to_cart(card.content,card.title,card.price,card.imageSource)"class="btn btn-danger">Add to Cart</a>
