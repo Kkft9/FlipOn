@@ -22,7 +22,7 @@ export class OffersPage implements OnInit {
   this.check_and_run=true;}})}
 
   check_and_run=false;
-  seed = [1,2,3,4,5,6,7,8]
+  seed = [0,1,2,0,3,4,5,6]
   idToLandOn: any;
   items: any[];
   textOrientation: TextOrientation = TextOrientation.HORIZONTAL
@@ -48,16 +48,18 @@ export class OffersPage implements OnInit {
 
   after() {
     const postData = {'email' : this.adminService.id_val,"discount": this.idToLandOn }
-    this.showAfter()
+    if(this.idToLandOn == 0) this.showSorry();
+    else this.showAfter();
     this.http.post("http://127.0.0.1:8000/offers/" , postData).subscribe(data =>{
-    })}
-
-  async showAfter() {
-    const alert = await this.alertCtrl.create({
-      header: "You have just been bamboozled!!",
-      message: "Congratulations, you just won a discount of " +this.idToLandOn+ "%",
-      buttons: ['OK']
-    });
+    })
+  }
+    async showAfter() {
+      const alert = await this.alertCtrl.create({
+        header: "You have just been bamboozled!!",
+        message: "Congratulations, you just won a discount of " +this.idToLandOn+ "%",
+        buttons: ['OK']
+      });
+    
     await alert.present();
     const result = await alert.onDidDismiss();
     console.log(result);
@@ -65,10 +67,23 @@ export class OffersPage implements OnInit {
     if(this.adminService.id_val=='')
     this.router.navigate(['/login']);
   }
+  
   async showDone(percent) {
     const alert = await this.alertCtrl.create({
       header: "Don't be too Greedy!!",
       message: "You have already won a discount of " +percent+ "%",
+      buttons: ['OK']
+    });
+    await alert.present();
+    const result = await alert.onDidDismiss();
+    // console.log(result);
+    console.log('result');
+  }
+
+  async showSorry() {
+    const alert = await this.alertCtrl.create({
+      header: "Unlucky!!",
+      message: "Not lucky enough :(",
       buttons: ['OK']
     });
     await alert.present();

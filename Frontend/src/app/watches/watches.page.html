@@ -1,7 +1,12 @@
-<h3 class="mx-3 my-3" style="font-weight: bold;">WATCHES</h3>
-<div class="container">
- <div class="row">
-   <div class="col-lg-4 mt-5 pb-3 shadow "  style="text-align:center;" *ngFor="let card of cardContent">
+<ion-header>
+  <ion-toolbar class="m-1 p-1">
+    <ion-title style="text-align: center; color: rgb(235, 75, 83); font-size: xx-large;"><b>Watches</b></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <div class="container"> -->
+ <div class="row mt-1 mx-5">
+   <div class="col-lg-3 my-3 mx-5 pb-3"   style="text-align:center; box-shadow: 2px 2px 2px 2px #888888;" *ngFor="let card of cardContent">
 
      <app-card [imageSource]="card.imageSource" [price]=card.price (click)="search(card.imageSource)" routerLink="/product-details" [title]="card.title" [content]="card.content" [numberOfFullStars]=card.stars ></app-card>
 
@@ -12,4 +17,4 @@
 
    </div>
  </div>
-</div>
+<!-- </div> -->

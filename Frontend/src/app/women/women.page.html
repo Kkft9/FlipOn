@@ -1,16 +1,22 @@
 
-       <h3 class="mx-3 my-3" style="font-weight: bold;">WOMEN</h3>
-       <div class="container">
-        <div class="row">
-          <div class="col-lg-4 mt-5 pb-3 shadow "  style="text-align:center;" *ngFor="let card of cardContent">
+<ion-header>
+  <ion-toolbar class="m-1 p-1">
+    <ion-title style="text-align: center; color: rgb(235, 75, 83); font-size: xx-large;"><b>Women</b></ion-title>
+  </ion-toolbar>
+</ion-header>
 
-            <app-card [imageSource]="card.imageSource" [price]=card.price (click)="search(card.imageSource)" routerLink="/product-details" [title]="card.title" [content]="card.content" [numberOfFullStars]=card.stars ></app-card>
 
-            <a style="color: white;" *ngIf="adminService.admin"  (click)="showAlert()" (click)="
-            add_to_cart(card.content,card.title,card.price,card.imageSource)"class="btn btn-danger">Add to Cart</a>
+       <!-- <div class="container"> -->
+<div class="row mt-1 mx-5">
+  <div class="col-lg-3 my-3 mx-5 pb-3"   style="text-align:center; box-shadow: 2px 2px 2px 2px #888888;" *ngFor="let card of cardContent">
 
-            <a style="color: white;"  *ngIf="!adminService.admin"   routerLink="/login"  class="btn btn-danger">Add to Cart</a>
+    <app-card [imageSource]="card.imageSource" [price]=card.price (click)="search(card.imageSource)" routerLink="/product-details" [title]="card.title" [content]="card.content" [numberOfFullStars]=card.stars class="hover-overlay"></app-card>
 
-          </div>
-        </div>
-       </div>
+    <a style="color: white;" *ngIf="adminService.admin"  (click)="showAlert()" (click)="
+    add_to_cart(card.content,card.title,card.price,card.imageSource)"class="btn btn-danger">Add to Cart</a>
+
+    <a style="color: white;"  *ngIf="!adminService.admin"   routerLink="/login"  class="btn btn-danger">Add to Cart</a>
+
+  </div>
+</div>
+       <!-- </div> -->
