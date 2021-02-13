@@ -20,6 +20,7 @@ export class CartPage implements OnInit {
   discount=0;
 
   constructor(public adminService: AdminService, private http: HttpClient,public router: Router,public alertCtrl: AlertController){
+    this.adminService.routing_history.push('/cart');
     this.postData = {"email": this.adminService.id_val};
     http.post("http://127.0.0.1:8000/cart/",this.postData).subscribe((res: any) => {
       for (let cart of res.cart){
@@ -96,7 +97,8 @@ export class CartPage implements OnInit {
         this.cardContent.push({
           "content": card['content'],
           "title": card['title'],
-          "price": card['price']
+          "price": card['price'],
+          "imgsrc": card['imageSource']
         }); }})}
 
     ngOnInit() {}

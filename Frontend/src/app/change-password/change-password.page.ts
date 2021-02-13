@@ -19,6 +19,7 @@ export class ChangePasswordPage implements OnInit {
   postData : any;
 
   constructor(public adminService: AdminService, private http : HttpClient , public router: Router, public alertCtrl: AlertController) {
+    this.adminService.routing_history.push('/change-password');
     this.http.get("http://127.0.0.1:8000/login/").subscribe(data =>{
       this.userDetails = data;
     })

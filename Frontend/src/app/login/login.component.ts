@@ -18,7 +18,10 @@ export class LoginComponent implements OnInit {
   postData = {};
   userData : any;
 
-  constructor(public adminService: AdminService,  public http : HttpClient ,public router: Router,public alertCtrl: AlertController ){}
+  constructor(public adminService: AdminService,  public http : HttpClient ,public router: Router,public alertCtrl: AlertController ){
+    this.adminService.routing_history.push['/login'];
+    console.log(this.adminService.routing_history)
+  }
 
   ngOnInit(): void {
   }
@@ -48,30 +51,15 @@ export class LoginComponent implements OnInit {
   }
 
   navigator_decider(){
-    if(this.adminService.add_cart==true)
-    this.router.navigate(['/men']);
-    else if(this.adminService.add_cart2==true)
-    this.router.navigate(['/cart']);
-    else if(this.adminService.add_cart3==true)
-    this.router.navigate(['/product-details']);
-    else if(this.adminService.add_cart_watch==true)
-    this.router.navigate(['/watches']);
-    else if(this.adminService.add_cart_women==true)
-    this.router.navigate(['/women']);
-    else
-    this.router.navigate(['/home']);
+    console.log(this.adminService.routing_history)
+    var nav=this.adminService.routing_history[ this.adminService.routing_history.length-1];
+    this.router.navigate([nav]);
     new HeaderComponent(this.adminService, this.http, this.alertCtrl).f4();
   }
 
   f2(){
     this.adminService.id_val = this.email
     this.adminService.admin=true;
-    this.adminService.add_cart=false;
-    this.adminService.add_cart2=false;
-    this.adminService.add_cart3=false;
-    this.adminService.add_cart_women=false;
-    this.adminService.add_cart_watch=false;
-
   }
 
   async showAlert() {

@@ -15,7 +15,7 @@ export class SearchPage implements OnInit {
   // static search: any;
 
   constructor(public adminService: AdminService,public http : HttpClient,public alertCtrl: AlertController)
-   {}
+   { this.adminService.routing_history.push('/search');}
 
     get staticname() {
       return SearchPage.searchContent;

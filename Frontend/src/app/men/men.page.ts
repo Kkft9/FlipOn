@@ -13,13 +13,7 @@ export class MenPage implements OnInit {
   cardContent:any[] = [ ];
 
 
- f1(){
-   this.adminService.add_cart=true;
-   this.adminService.add_cart3=false
-   this.adminService.add_cart2=false
-   this.adminService.add_cart_women=false
-   this.adminService.add_cart_women=false
- }
+
 
  search( search_value)
  {
@@ -31,6 +25,7 @@ export class MenPage implements OnInit {
 
   constructor(public adminService: AdminService, private http: HttpClient, public alertCtrl: AlertController)
   {
+    this.adminService.routing_history.push('/men')
     http.get('http://127.0.0.1:8000/men/').subscribe((res: any) => {
       this.cardContent=res['details'];
 

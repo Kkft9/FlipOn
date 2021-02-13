@@ -16,6 +16,8 @@ export class ProfileComponent implements OnInit{
   number=""
   userDetails : any;
    constructor(public adminService: AdminService,  private http : HttpClient, public alertCtrl: AlertController  ) {
+    this.adminService.routing_history.push('/profile');
+
     this.http.get("http://127.0.0.1:8000/login/").subscribe(data =>{
       this.userDetails = data;
       this.name= this.userDetails[adminService.id_val]['name'];

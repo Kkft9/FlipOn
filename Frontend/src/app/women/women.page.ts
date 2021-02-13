@@ -11,13 +11,6 @@ import  { ProductDetailsPage} from '../product-details/product-details.page'
 })
 export class WomenPage implements OnInit {
   cardContent:any[] = [ ];
- f1(){
-   this.adminService.add_cart=false;
-   this.adminService.add_cart3=false
-   this.adminService.add_cart2=false
-   this.adminService.add_cart_women=true
-   this.adminService.add_cart_watch=false
- }
 
  search( search_value)
  {
@@ -29,6 +22,8 @@ export class WomenPage implements OnInit {
 
   constructor(public adminService: AdminService, private http: HttpClient, public alertCtrl: AlertController)
   {
+    this.adminService.routing_history.push('/women');
+    console.log(this.adminService.routing_history)
     http.get('http://127.0.0.1:8000/women/').subscribe((res: any) => {
       this.cardContent=res['details'];
 

@@ -9,7 +9,7 @@
             <a style="color: white;" *ngIf="adminService.admin" (click)="showAlert()" (click)="
             add_to_cart(card.content,card.title,card.price,card.imageSource)"class="btn btn-danger">Add to Cart</a>
 
-            <a style="color: white;"  *ngIf="!adminService.admin"  (click)="f1()"  routerLink="/login"  class="btn btn-danger">Add to Cart</a>
+            <a style="color: white;"  *ngIf="!adminService.admin"   routerLink="/login"  class="btn btn-danger">Add to Cart</a>
 
           </div>
         </div>

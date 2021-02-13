@@ -13,13 +13,7 @@ export class ProductDetailsPage implements OnInit
 {
   static searchContent:any[] = [];
  static product_value;
-  f1() {
-    this.adminService.add_cart3=true;
-    this.adminService.add_cart=false
-    this.adminService.add_cart2=false
-    this.adminService.add_cart_watch=false
-    this.adminService.add_cart_women=false
-      }
+
   searche(search_value)
    {
     const postData={'search':search_value}
@@ -40,7 +34,9 @@ export class ProductDetailsPage implements OnInit
     return ProductDetailsPage.product_value;
   }
 
-  constructor(public adminService: AdminService, public alertCtrl: AlertController,public http : HttpClient) { }
+  constructor(public adminService: AdminService, public alertCtrl: AlertController,public http : HttpClient) {
+    this.adminService.routing_history.push('/product-details');
+  }
 
   async showAlert() {
     const alert = await this.alertCtrl.create({

@@ -5,11 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AdminService {
 admin=false;
-add_cart=false;
-add_cart2=false;
-add_cart3=false;
-add_cart_watch=false;
-add_cart_women=false;
+routing_history=[];
 id_val='';
 constructor() { }
 }

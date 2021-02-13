@@ -14,6 +14,7 @@ export class OffersPage implements OnInit {
   @ViewChild(NgxWheelComponent, { static: false }) wheel;
 
   constructor(public alertCtrl: AlertController,public adminService: AdminService,  public router: Router,public http : HttpClient ){
+    this.adminService.routing_history.push('/offers')
   const postData = {'email' : this.adminService.id_val }
   this.http.post("http://127.0.0.1:8000/offers/" , postData).subscribe(data =>{
   if(data["discount"]>0){

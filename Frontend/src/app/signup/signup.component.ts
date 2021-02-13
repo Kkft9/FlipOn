@@ -19,7 +19,7 @@ export class SignupComponent implements OnInit {
   postData = {};
   userDetails : any;
 
-  constructor(public adminService: AdminService, private http : HttpClient, public router: Router, public alertCtrl: AlertController) { }
+  constructor(public adminService: AdminService, private http : HttpClient, public router: Router, public alertCtrl: AlertController) { this.adminService.routing_history.push('/signup'); }
 
   ngOnInit(): void {
   }
@@ -56,9 +56,7 @@ export class SignupComponent implements OnInit {
     this.adminService.id_val = this.email;
     console.log(this.name);
     this.adminService.admin=true;
-    this.adminService.add_cart=false;
-    this.adminService.add_cart2=false;
-    this.adminService.add_cart3=false;
+
      new HeaderComponent(this.adminService, this.http, this.alertCtrl).f4();
   }
 
