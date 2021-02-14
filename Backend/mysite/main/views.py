@@ -12,37 +12,6 @@ from db import  readmongoDB , writemongoDB, updatemongoDB
 
 # Create your views here.
 
-# @csrf_exempt
-# def funMen(request):
-#     if request.method == 'GET' :
-#         data = readDB(filename = DB)
-#         req = data['database']['men']
-#         res = {'men' : req}
-#         return JsonResponse(res)
-
-#     elif request.method == 'POST' :
-#         dictObj = json.loads(request.body)
-#         if dictObj['add'] == 'true' :
-#             o = dictObj['obj']
-#             writeDB(obj=o, loc='men', filename = DB)
-#         return JsonResponse({"request" : "posted in men section"})
-
-# @csrf_exempt
-# def funWomen(request) :
-#     if request.method == 'GET' :
-#         data = readDB(filename = DB)
-#         req = data['database']['women']
-#         res = {'women' : req}
-#         return JsonResponse(res)
-
-#     elif request.method == 'POST' :
-#         dictObj = json.loads(request.body)
-#         if dictObj['add'] == 'true' :
-#             o = dictObj['obj']
-#             writeDB(obj=o, loc='women', filename = DB)
-#         return JsonResponse({"request" : "posted in women section"})
-
-
 @csrf_exempt
 def signup(request) :
     if request.method == 'GET' :
@@ -166,6 +135,7 @@ def men(request):
         product   = []
         for i in products:
             product.append(i)
+        print(product)
         return JsonResponse({"details" : product})
 
 @csrf_exempt

@@ -12,12 +12,12 @@ import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
 import {HttpClientModule } from '@angular/common/http';
 
-import { HomeComponent } from './home/home.component';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {FormsModule} from '@angular/forms';
+// import  CardComponent  from './card/card.component';
 
 
 
@@ -30,8 +30,6 @@ declarations: [
   LoginComponent,
   SignupComponent,
   ProfileComponent,
-
-  HomeComponent,
 
 
 ],

@@ -32,7 +32,7 @@ export class WomenPage implements OnInit {
 
   }
 
-  add_to_cart(content,title,price,imageSource)
+  add_to_cart(content: any,title: any,price: any,imageSource: any)
   {
     this.postData={'email':this.adminService.id_val, 'cart' : {"content": content, "title": title,"price":price, "imageSource":imageSource}}
     this.http.post("http://127.0.0.1:8000/women/",this.postData).subscribe((res: any) => {});

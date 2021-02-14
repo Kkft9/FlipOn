@@ -1,0 +1,119 @@
+
+<ion-header>
+  <ion-toolbar class="m-1 p-1">
+    <ion-title style="text-align: center; color: rgb(235, 75, 83); font-size: xx-large;"><b>Men</b></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div id="imen" class="carousel slide" data-ride="carousel">
+	<div class="carousel-inner">
+		<div class="carousel-item active">
+			<div class="row mt-1 mx-5">
+				<div class="col-lg-3 my-3 mx-5 pb-3 "  style="text-align:center; box-shadow: 2px 2px 2px 2px #888888;" *ngFor="let index of index_arr1" >
+					<app-card [imageSource]="cardContent_men[index].imageSource" [price]=cardContent_men[index].price  (click)="search(cardContent_men[index].imageSource)" routerLink="/product-details" [title]="cardContent_men[index].title" [content]="cardContent_men[index].content" [numberOfFullStars]=cardContent_men[index].stars ></app-card>
+					<button style="color: white;" *ngIf="adminService.admin" (click)="showAlert()" (click)="
+					add_to_cart_men(cardContent_men[index].content,cardContent_men[index].title,cardContent_men[index].price,cardContent_men[index].imageSource)"class="btn btn-danger">Add to Cart</button>
+				
+					<button style="color: white;"  *ngIf="!adminService.admin"   routerLink="/login"  class="btn btn-danger">Add to Cart</button>
+				</div>
+			</div>
+		</div>
+		<div class="carousel-item">
+			<div class="row mt-1 mx-5">
+				<div class="col-lg-3 my-3 mx-5 pb-3 "  style="text-align:center; box-shadow: 2px 2px 2px 2px #888888;" *ngFor="let index of index_arr2" >
+					<app-card [imageSource]="cardContent_men[index].imageSource" [price]=cardContent_men[index].price  (click)="search(cardContent_men[index].imageSource)" routerLink="/product-details" [title]="cardContent_men[index].title" [content]="cardContent_men[index].content" [numberOfFullStars]=cardContent_men[index].stars ></app-card>
+					<button style="color: white;" *ngIf="adminService.admin" (click)="showAlert()" (click)="
+					add_to_cart_men(cardContent_men[index].content,cardContent_men[index].title,cardContent_men[index].price,cardContent_men[index].imageSource)"class="btn btn-danger">Add to Cart</button>
+				
+					<button style="color: white;"  *ngIf="!adminService.admin"   routerLink="/login"  class="btn btn-danger">Add to Cart</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a href="#imen" class="carousel-control-prev" data-slide="prev">
+		<span class="carousel-control-prev-icon"></span>
+	</a>
+	<a href="#imen" class="carousel-control-next" data-slide="next">
+		<span class="carousel-control-next-icon"></span>
+	</a>
+</div>
+
+<ion-item style="border-bottom: 1px solid #f3f3f3"></ion-item>
+<ion-header>
+  <ion-toolbar class="m-1 p-1">
+    <ion-title style="text-align: center; color: rgb(235, 75, 83); font-size: xx-large;"><b>Women</b></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div id="iwomen" class="carousel slide" data-ride="carousel">
+	<div class="carousel-inner">
+		<div class="carousel-item active">
+			<div class="row mt-1 mx-5">
+				<div class="col-lg-3 my-3 mx-5 pb-3 "  style="text-align:center; box-shadow: 2px 2px 2px 2px #888888;" *ngFor="let index of index_arr1" >
+					<app-card [imageSource]="cardContent_women[index].imageSource" [price]=cardContent_women[index].price  (click)="search(cardContent_women[index].imageSource)" routerLink="/product-details" [title]="cardContent_women[index].title" [content]="cardContent_women[index].content" [numberOfFullStars]=cardContent_women[index].stars ></app-card>
+					<button style="color: white;" *ngIf="adminService.admin" (click)="showAlert()" (click)="
+					add_to_cart_men(cardContent_women[index].content,cardContent_women[index].title,cardContent_women[index].price,cardContent_women[index].imageSource)"class="btn btn-danger">Add to Cart</button>
+				
+					<button style="color: white;"  *ngIf="!adminService.admin"   routerLink="/login"  class="btn btn-danger">Add to Cart</button>
+				</div>
+			</div>
+		</div>
+		<div class="carousel-item">
+			<div class="row mt-1 mx-5">
+				<div class="col-lg-3 my-3 mx-5 pb-3 "  style="text-align:center; box-shadow: 2px 2px 2px 2px #888888;" *ngFor="let index of index_arr2" >
+					<app-card [imageSource]="cardContent_women[index].imageSource" [price]=cardContent_women[index].price  (click)="search(cardContent_women[index].imageSource)" routerLink="/product-details" [title]="cardContent_women[index].title" [content]="cardContent_women[index].content" [numberOfFullStars]=cardContent_women[index].stars ></app-card>
+					<button style="color: white;" *ngIf="adminService.admin" (click)="showAlert()" (click)="
+					add_to_cart_men(cardContent_women[index].content,cardContent_women[index].title,cardContent_women[index].price,cardContent_women[index].imageSource)"class="btn btn-danger">Add to Cart</button>
+				
+					<button style="color: white;"  *ngIf="!adminService.admin"   routerLink="/login"  class="btn btn-danger">Add to Cart</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a href="#iwomen" class="carousel-control-prev" data-slide="prev">
+		<span class="carousel-control-prev-icon"></span>
+	</a>
+	<a href="#iwomen" class="carousel-control-next" data-slide="next">
+		<span class="carousel-control-next-icon"></span>
+	</a>
+</div>
+
+<ion-item style="border-bottom: 1px solid #f3f3f3"></ion-item>
+<ion-header>
+  <ion-toolbar class="m-1 p-1">
+    <ion-title style="text-align: center; color: rgb(235, 75, 83); font-size: xx-large;"><b>Watches</b></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div id="iwatch" class="carousel slide" data-ride="carousel">
+	<div class="carousel-inner">
+		<div class="carousel-item active">
+			<div class="row mt-1 mx-5">
+				<div class="col-lg-3 my-3 mx-5 pb-3 "  style="text-align:center; box-shadow: 2px 2px 2px 2px #888888;" *ngFor="let index of index_arr1" >
+					<app-card [imageSource]="cardContent_watch[index].imageSource" [price]=cardContent_watch[index].price  (click)="search(cardContent_watch[index].imageSource)" routerLink="/product-details" [title]="cardContent_watch[index].title" [content]="cardContent_watch[index].content" [numberOfFullStars]=cardContent_watch[index].stars ></app-card>
+					<button style="color: white;" *ngIf="adminService.admin" (click)="showAlert()" (click)="
+					add_to_cart_men(cardContent_watch[index].content,cardContent_watch[index].title,cardContent_watch[index].price,cardContent_watch[index].imageSource)"class="btn btn-danger">Add to Cart</button>
+				
+					<button style="color: white;"  *ngIf="!adminService.admin"   routerLink="/login"  class="btn btn-danger">Add to Cart</button>
+				</div>
+			</div>
+		</div>
+		<div class="carousel-item">
+			<div class="row mt-1 mx-5">
+				<div class="col-lg-3 my-3 mx-5 pb-3 "  style="text-align:center; box-shadow: 2px 2px 2px 2px #888888;" *ngFor="let index of index_arr2" >
+					<app-card [imageSource]="cardContent_watch[index%5].imageSource" [price]=cardContent_watch[index%5].price  (click)="search(cardContent_watch[index%5].imageSource)" routerLink="/product-details" [title]="cardContent_watch[index%5].title" [content]="cardContent_watch[index%5].content" [numberOfFullStars]=cardContent_watch[index%5].stars ></app-card>
+					<button style="color: white;" *ngIf="adminService.admin" (click)="showAlert()" (click)="
+					add_to_cart_men(cardContent_watch[index%5].content,cardContent_watch[index%5].title,cardContent_watch[index%5].price,cardContent_watch[index%5].imageSource)"class="btn btn-danger">Add to Cart</button>
+				
+					<button style="color: white;"  *ngIf="!adminService.admin"   routerLink="/login"  class="btn btn-danger">Add to Cart</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a href="#iwatch" class="carousel-control-prev" data-slide="prev">
+		<span class="carousel-control-prev-icon"></span>
+	</a>
+	<a href="#iwatch" class="carousel-control-next" data-slide="next">
+		<span class="carousel-control-next-icon"></span>
+	</a>
+</div>
