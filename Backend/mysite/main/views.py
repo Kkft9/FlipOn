@@ -257,6 +257,6 @@ def product_details(request) :
         product.pop(0) 
 
         # print(product)       
-    return JsonResponse({"details" :product,"title":products['title'],"content":products['content'], "price": products['price'] })        
+    return JsonResponse({"details" :product,"title":products['title'],"content":products['content'], "price": products['price'] , "id" : products['id']})        
 
             

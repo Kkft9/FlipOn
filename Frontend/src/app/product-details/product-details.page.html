@@ -32,7 +32,7 @@
     <h4 style="text-align: left; font-size: x-large;">Cost : Rs. {{staticprice}}</h4>
     <br>
 
-    <ion-row>
+    <ion-row *ngIf="staticpid != 'watch'">
     <p style="text-align: left; color: grey;font-size: large" > Size</p>
     <button type="button"  class="btn btn-outline-dark mx-4">Small</button>
     <button type="button"  class="btn btn-outline-dark mx-4">Medium</button>
@@ -42,9 +42,9 @@
     <p style="text-align: left;font-family: cursive; color:red; padding-top: 3%; font-weight: bolder;font-size: large" > Hurry! Only a few left</p>
     <br>
 
-    <a style="color: white;"  *ngIf="adminService.admin"  (click)="
-    add_to_cart(staticcontent,statictitle,staticprice,staticproduct_value)" (click)="showAlert()"class="btn btn-danger">Add to Cart</a>
-    <a style="color: white;"  *ngIf="!adminService.admin"   routerLink="/login" class="btn btn-danger">Add to Cart</a>
+    <button style="color: white;"  *ngIf="adminService.admin"  (click)="
+    add_to_cart(staticcontent,statictitle,staticprice,staticproduct_value)" (click)="showAlert()"class="btn btn-danger">Add to Cart</button>
+    <button style="color: white;"  *ngIf="!adminService.admin"   routerLink="/login" class="btn btn-danger">Add to Cart</button>
   </ion-col>
   </ion-row>
 

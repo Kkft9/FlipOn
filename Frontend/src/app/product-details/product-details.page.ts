@@ -16,6 +16,7 @@ export class ProductDetailsPage implements OnInit
  static title ;
  static price;
  static content;
+ static pid;
 
   searche(search_value)
    {
@@ -26,7 +27,10 @@ export class ProductDetailsPage implements OnInit
       ProductDetailsPage.title=data['title'];
       ProductDetailsPage.price=data['price'];
       ProductDetailsPage.content=data['content'];
+      ProductDetailsPage.pid=data['id'];
       console.log(this.staticname);
+      console.log(this.staticpid);
+
    })
   }
 
@@ -48,6 +52,10 @@ export class ProductDetailsPage implements OnInit
 
   get staticproduct_value() {
     return ProductDetailsPage.product_value;
+  }
+
+  get staticpid() {
+    return ProductDetailsPage.pid;
   }
 
   constructor(public adminService: AdminService, public alertCtrl: AlertController,public http : HttpClient) {
