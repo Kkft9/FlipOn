@@ -11,17 +11,17 @@
   <ion-row >
     <ion-col   >
 
-            <div class = "card m-5 p-2 mx-auto" style="box-shadow: 2px 1px #888888; padding: 2%; margin: 3%;">
+            <div class = "card m-5 p-2 mx-auto" style="box-shadow: 2px 1px #888888; padding: 2%; margin: 3%;" *ngFor="let card of cardContent">
               <ion-row>
-               <ion-col size="4">
-               <img src="../../assets/i1.jpg"  class="card-img-top img-fluid" >
+               <ion-col size="3">
+               <img [src]="card.imageSource"  class="card-img-top img-fluid" >
                </ion-col>
 
                <ion-col size="4" style=" padding-left: 5%; ;">
-                  <h2 style="font-size:x-large;">Formals-1</h2>
-                  <p style="color: gray; font-size:x-large;">Color: Red <p>
+                <h2 style="font-size:larger;">{{card['title']}}</h2>
+                <p  >{{card.content}} <p>
                   <br>
-                  <h2 style="font-size:larger ">Ordered <span style="color:rgb(32, 117, 196);">(Expected delivery by tomorrow)  </span> </h2>
+                  <h2 style="font-size:larger ">Ordered <span style="color:rgb(32, 117, 196);">(Delivered) </span> </h2>
                 </ion-col>
 
                 <ion-col size="2"  >
@@ -30,48 +30,20 @@
                 </ion-col>
 
                 <ion-col size="2"  >
-                  <h2 style=" font-size:x-large;">Rs. 2,000</h2>
+                  <h2 style=" font-size:x-large;">Rs. {{card.price}}</h2>
                   <p style="color: gray; font-size: small;">(Inclusive of all taxes) <p>
                     <br>
-                    <button type="button" class="btn btn-primary " style="position: absolute; "  >Track Delivery</button>
+                    <button type="button" class="btn btn-danger " style="position: absolute; " routerLink="/complaint" >Generate Complaint</button>
                 </ion-col>
               </ion-row>
             </div>
 
-            <div class = "card m-5 p-2 mx-auto" style="box-shadow: 2px 1px #888888; padding: 2%; margin: 3%;">
-              <ion-row>
 
-               <ion-col size="4">
-               <img src="../../assets/i1.jpg"  class="card-img-top img-fluid" >
-               </ion-col>
 
-               <ion-col size="4" style=" padding-left: 5%; ;">
-                  <h2 style="font-size:x-large;">Formals-2</h2>
-                  <p style="color: gray; font-size:x-large;">Color: Red <p>
-                  <br>
-                  <h2 style="font-size:larger ">Ordered <span style="color:cyan;">(Delivered)  </span> </h2>
-                </ion-col>
 
-                <ion-col size="2"  >
-                  <h2 style=" font-size:larger;color: gray;"> Quantity: 1</h2>
 
-                </ion-col>
 
-                <ion-col size="2"  >
-                  <h2 style="font-size:x-large;">Rs. 2,000</h2>
-                  <p style="color: gray; font-size: small;">(Inclusive of all taxes) <p>
-                    <br>
-                    <button type="button" class="btn btn-danger " style="position: absolute; " >Generate Complaint</button>
-                </ion-col>
-              </ion-row>
-            </div>
 
-            <div>
-
-            </div>
-
-            <br>
-            <br>
 
     </ion-col>
 

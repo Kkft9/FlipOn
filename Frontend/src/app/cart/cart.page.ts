@@ -101,7 +101,21 @@ export class CartPage implements OnInit {
           "imgsrc": card['imageSource']
         }); }})}
 
-    ngOnInit() {}
+        checkout()
+        {
+        // console.log('check')
+          this.postData = {"email": this.adminService.id_val, "checkout": ''};
+          this.cardContent=[];
+          this.CartTotal=0
+          this.discount=0
+          this.http.post("http://127.0.0.1:8000/cart/",this.postData).subscribe((res: any) => {})
+        }
+
+
+
+    ngOnInit() {
+
+    }
 
   }
 

@@ -6,7 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
-  
+
 {
   path: 'login',
   component: LoginComponent
@@ -62,7 +62,12 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'complaint',
+    loadChildren: () => import('./complaint/complaint.module').then( m => m.ComplaintPageModule)
   }
+
 
 
 

@@ -37,12 +37,15 @@ export class ProductDetailsPage implements OnInit
   get statictitle() {
     return ProductDetailsPage.title;
   }
+
   get staticcontent() {
     return ProductDetailsPage.content;
   }
+
   get staticprice() {
     return ProductDetailsPage.price;
   }
+
   get staticproduct_value() {
     return ProductDetailsPage.product_value;
   }
@@ -61,12 +64,13 @@ export class ProductDetailsPage implements OnInit
     const result = await alert.onDidDismiss();
     console.log(result);
   }
+
   postData;
-  add_to_cart(content: any,title: any,price: any,imageSource: any)
-  {
+  add_to_cart(content: any,title: any,price: any,imageSource: any){
     this.postData={'email':this.adminService.id_val, 'cart' : {"content": content, "title": title,"price":price, "imageSource":imageSource}}
     this.http.post("http://127.0.0.1:8000/men/",this.postData).subscribe((res: any) => {});
   }
+
   ngOnInit() {
   }
 
