@@ -14,19 +14,19 @@
                 <ion-row>
 
                 <ion-col size="4">
-                <img src="../../assets/i1.jpg"  class="card-img-top img-fluid" >
+                <img [src]="card.imgsrc"  class="card-img-top img-fluid" >
                 </ion-col>
 
                 <ion-col size="5" style=" padding-left: 5%;">
                     <h2 style="font-size:larger;">{{card['title']}}</h2>
-                    <p style="color: gray; ">{{card.content}} <p>
+                    <p style="color:#fafafa ; ">{{card.content}} <p>
                     <ion-input  style="border: grey; border-width: 1px; border-style:inset; max-width: 25%;" value="1" type="number">
                     </ion-input>
                   </ion-col>
 
                   <ion-col size="3"  >
                     <h2 style=" font-size:larger;">Rs.{{card.price}}</h2>
-                    <p style="color: gray; font-size: small;">(Inclusive of all taxes) <p>
+                    <p style="color:#fafafa ; font-size: small;">(Inclusive of all taxes) <p>
                     <button type="button" class="btn btn-danger " (click)="delete(card.title)" style="font-size: medium ;position: absolute; " >Remove From Cart</button>
                   </ion-col>
 
