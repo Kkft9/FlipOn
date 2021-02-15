@@ -12,6 +12,7 @@ export class SearchPage implements OnInit {
 
 
  static searchContent:any[] = [ ];
+ postData
   // static search: any;
 
   constructor(public adminService: AdminService,public http : HttpClient,public alertCtrl: AlertController)
@@ -20,6 +21,12 @@ export class SearchPage implements OnInit {
     get staticname() {
       return SearchPage.searchContent;
     }
+    add_to_cart(content: any,title: any,price: any,imageSource: any)
+  {
+    this.postData={'email':this.adminService.id_val, 'cart' : {"content": content, "title": title,"price":price, "imageSource":imageSource}}
+    this.http.post("http://127.0.0.1:8000/men/",this.postData).subscribe((res: any) => {});
+  }
+
    searche(search_value)
    {
     const postData={'search':search_value}
@@ -30,6 +37,16 @@ export class SearchPage implements OnInit {
       this.showAlert()
 
    })
+  }
+  async showAlert_added() {
+    const alert = await this.alertCtrl.create({
+      header: 'Congratulations',
+      message: 'Your item has been added to the cart',
+      buttons: ['OK']
+    });
+    await alert.present();
+    const result = await alert.onDidDismiss();
+    console.log(result);
   }
 
   search( search_value)

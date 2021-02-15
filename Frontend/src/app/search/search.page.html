@@ -1,9 +1,12 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-4 mt-5 pb-3 shadow "  style="text-align:center" *ngFor="let card of staticname">
+<!-- <div class="container"> -->
+  <div class="row mt-1 mx-5">
+    <div class="col-lg-3 my-3 mx-5 pb-3 "  style="text-align:center; box-shadow: 2px 2px 2px 2px #888888;" *ngFor="let card of staticname">
 
       <app-card [imageSource]="card.imageSource" [numberOfFullStars]=card.stars (click)="search(card.imageSource)" [price]=card.price   routerLink="/product-details" [title]="card.title" [content]="card.content" ></app-card>
+      <button style="color: white;" *ngIf="adminService.admin" (click)="showAlert_added()" (click)="
+      add_to_cart(card.content,card.title,card.price,card.imageSource)"class="btn btn-danger">Add to Cart</button>
 
+      <button style="color: white;"  *ngIf="!adminService.admin"   routerLink="/login"  class="btn btn-danger">Add to Cart</button>
     </div>
   </div>
- </div>
+ <!-- </div> -->

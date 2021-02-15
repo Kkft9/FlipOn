@@ -12,10 +12,7 @@ import  { ProductDetailsPage} from '../product-details/product-details.page'
 export class MenPage implements OnInit {
   cardContent:any[] = [ ];
 
-
-
-
- search( search_value)
+ search(search_value: any)
  {
 
    new ProductDetailsPage(this.adminService, this.alertCtrl,this.http).searche(search_value);
@@ -28,13 +25,11 @@ export class MenPage implements OnInit {
     this.adminService.routing_history.push('/men')
     http.get('http://127.0.0.1:8000/men/').subscribe((res: any) => {
       this.cardContent=res['details'];
-
-
     });
 
   }
 
-  add_to_cart(content,title,price,imageSource)
+  add_to_cart(content: any,title: any,price: any,imageSource: any)
   {
     this.postData={'email':this.adminService.id_val, 'cart' : {"content": content, "title": title,"price":price, "imageSource":imageSource}}
     this.http.post("http://127.0.0.1:8000/men/",this.postData).subscribe((res: any) => {});

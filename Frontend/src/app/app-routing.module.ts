@@ -1,15 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+// import { HomeComponent } from './home1/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component:  HomeComponent
-  },
+  
 {
   path: 'login',
   component: LoginComponent
@@ -22,10 +19,7 @@ const routes: Routes = [
   path: 'profile',
   component: ProfileComponent
 },
-{
-  path: 'home',
-  component: HomeComponent
-},
+
   {
     path: 'cart',
     loadChildren: () => import('./cart/cart.module').then( m => m.CartPageModule)
@@ -40,7 +34,8 @@ const routes: Routes = [
   {
     path: 'product-details',
     loadChildren: () => import('./product-details/product-details.module').then( m => m.ProductDetailsPageModule)
-  },  {
+  },
+  {
     path: 'change-password',
     loadChildren: () => import('./change-password/change-password.module').then( m => m.ChangePasswordPageModule)
   },
@@ -59,6 +54,14 @@ const routes: Routes = [
   {
     path: 'search',
     loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   }
 
 

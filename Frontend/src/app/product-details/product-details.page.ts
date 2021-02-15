@@ -13,6 +13,9 @@ export class ProductDetailsPage implements OnInit
 {
   static searchContent:any[] = [];
  static product_value;
+ static title ;
+ static price;
+ static content;
 
   searche(search_value)
    {
@@ -20,15 +23,25 @@ export class ProductDetailsPage implements OnInit
     ProductDetailsPage.product_value=search_value
     this.http.post("http://127.0.0.1:8000/product-details/" , postData).subscribe(data =>{
       ProductDetailsPage.searchContent=data['details'];
+      ProductDetailsPage.title=data['title'];
+      ProductDetailsPage.price=data['price'];
+      ProductDetailsPage.content=data['content'];
       console.log(this.staticname);
-
-
-
    })
   }
 
   get staticname() {
     return ProductDetailsPage.searchContent;
+  }
+
+  get statictitle() {
+    return ProductDetailsPage.title;
+  }
+  get staticcontent() {
+    return ProductDetailsPage.content;
+  }
+  get staticprice() {
+    return ProductDetailsPage.price;
   }
   get staticproduct_value() {
     return ProductDetailsPage.product_value;
@@ -48,8 +61,14 @@ export class ProductDetailsPage implements OnInit
     const result = await alert.onDidDismiss();
     console.log(result);
   }
-
+  postData;
+  add_to_cart(content: any,title: any,price: any,imageSource: any)
+  {
+    this.postData={'email':this.adminService.id_val, 'cart' : {"content": content, "title": title,"price":price, "imageSource":imageSource}}
+    this.http.post("http://127.0.0.1:8000/men/",this.postData).subscribe((res: any) => {});
+  }
   ngOnInit() {
   }
 
 }
+

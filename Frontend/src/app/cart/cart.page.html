@@ -19,14 +19,14 @@
 
                 <ion-col size="5" style=" padding-left: 5%;">
                     <h2 style="font-size:larger;">{{card['title']}}</h2>
-                    <p style="color:#fafafa ; ">{{card.content}} <p>
+                    <p  >{{card.content}} <p>
                     <ion-input  style="border: grey; border-width: 1px; border-style:inset; max-width: 25%;" value="1" type="number">
                     </ion-input>
                   </ion-col>
 
                   <ion-col size="3"  >
                     <h2 style=" font-size:larger;">Rs.{{card.price}}</h2>
-                    <p style="color:#fafafa ; font-size: small;">(Inclusive of all taxes) <p>
+                    <p style=" font-size: small;">(Inclusive of all taxes) <p>
                     <button type="button" class="btn btn-danger " (click)="delete(card.title)" style="font-size: medium ;position: absolute; " >Remove From Cart</button>
                   </ion-col>
 
@@ -44,7 +44,7 @@
 
       <ion-col size="4" >
         <ion-row>
-          <ion-col class="card mb-3" style="background-color: rgb(233, 233, 233); padding: 5%; box-shadow: 2px 1px #888888;">
+          <ion-col class="card mb-3" style="background-color: #fafafa; padding: 5%; box-shadow: 2px 1px #888888;">
             <h2 style=" font-size:large"><b>Apply Coupon Code</b></h2>
 
               <ion-row>
@@ -61,7 +61,7 @@
         </ion-row>
 
 
-        <ion-row style="background-color: rgb(233, 233, 233); padding: 5%; box-shadow: 2px 1px #888888;"  >
+        <ion-row style="background-color:#fafafa; padding: 5%; box-shadow: 2px 1px #888888;"  >
 
             <h2 style=" font-size:large; padding-top: 0%;  font-weight: bolder;">ORDER SUMMARY</h2>
             <ion-col size="8">
