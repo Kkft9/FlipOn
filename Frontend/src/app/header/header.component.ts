@@ -11,7 +11,7 @@ import  { SearchPage} from '../search/search.page'
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  search_value:any;
+  search_value='';
 
 
 

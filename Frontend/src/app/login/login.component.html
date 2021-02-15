@@ -2,10 +2,10 @@
   <div class="card-body">
     <h2 class="card-title m-1" style="font-size:50px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><i>Welcome to FlipOn!</i></h2>
     <h4 class="card-title mt-2 mb-3"><b>Sign in to your account!</b></h4>
-        <form>
+        <form #form ngNativeValidate>
           <p> <input type="email" style="width: 75%; border: none; border-bottom: 1px solid #eb445a;" name="email" placeholder="Email" [(ngModel)]="email" required> </p>
           <p> <input type="password" style="width: 75%; border: none; border-bottom: 1px solid #eb445a ;" [(ngModel)]="password" name="password" placeholder="Password" required> </p>
-          <br><button type="submit" class="btn btn-danger" (click)="login()">Sign in</button><p></p>
+          <br><button type="submit" class="btn btn-danger"  (click)="form.checkValidity()? login(): null">Sign in</button><p></p>
           <!-- <button type="submit" class="btn btn-danger" *ngIf="adminService.add_cart" routerLink="/men" (click)="login()">Sign in</button><p></p> -->
           <!-- <button type="submit" class="btn btn-danger" *ngIf="adminService.add_cart2 " routerLink="/cart" (click)="login()">Sign in</button><p></p> -->
           <!-- <button type="submit" class="btn btn-danger" *ngIf="adminService.add_cart3 " (click)="login()">Sign in</button><p></p> -->
