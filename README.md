@@ -6,7 +6,7 @@
 
 
 ## Images ## 
-<img src="https://github.com/Kkft9/FlipOn/blob/master/images/FlipOn_men.png" width="200" height="200" /><img src="https://github.com/Kkft9/FlipOn/blob/master/images/FlipOn_women.png" width="200" height="200" />
+<img src="https://github.com/Kkft9/FlipOn/blob/master/images/FlipOn_men.png" width="350" height="200" />   <imgsrc="https://github.com/Kkft9/FlipOn/blob/master/images/FlipOn_women.png" width="200" height="200" />
 
 <img src="https://github.com/Kkft9/FlipOn/blob/master/images/FlipOn_watches.png" width="200" height="200" />
 <img src="https://github.com/Kkft9/FlipOn/blob/master/images/FlipOn_wheel.png" width="200" height="200" />
