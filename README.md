@@ -47,6 +47,7 @@
  
  * Install dependencies
  ``` 
+    cd Frontend/
     npm install
  ```
  
@@ -55,15 +56,17 @@
     npm install -g @angular/cli
  ```
  
- * Install Django
- ```
-    python -m pip install Django
- ```
- 
- * Install ngw wheel
+  * Install ngw wheel
  ```
     npm install ngx-wheel
  ```
+ 
+ * Install Django
+ ```
+    cd Backend/mysite
+    python -m pip install Django
+ ```
+ 
  
  ## Run the Application ##
  * Run the backend server - Django
