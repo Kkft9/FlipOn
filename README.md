@@ -76,7 +76,7 @@
  ```
  The server starts running on [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
  
- * Run the frontend - Angular
+ * Run the frontend - Angular</br>
     Open a new terminal
  ```
     cd Frontend/
