@@ -9,6 +9,12 @@ import { AdminService } from './admin/service.service';
 })
 export class AppComponent {
   title = 'my-app';
+  response = null;
 
-  constructor(public adminService: AdminService) { }
+  // constructor(public adminService: AdminService, private http : HttpClient) {
+  //   this.http.get('http://65.1.28.10/api/hello/' , {responseType: 'text'}).subscribe((res: any) => {
+  //     this.response = res;
+  //   })
+  //  }
+   constructor(public adminService: AdminService) { }
 }
